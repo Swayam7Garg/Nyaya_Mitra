@@ -8,7 +8,7 @@ import DualDisplayPanel from '../../../../components/situations/DualDisplayPanel
 import DocumentChecklist from '../../../../components/situations/DocumentChecklist';
 import ProcedureStepper from '../../../../components/situations/ProcedureStepper';
 import ProgressStepper from '../../../../components/shared/ProgressStepper';
-import AIChatbox from '../../../../components/situations/AIChatbox';
+import GeminiChat from '../../../../components/situations/GeminiChat';
 import situationsData from '../../../../data/situations';
 import type { Situation } from '../../../../types';
 
@@ -41,7 +41,7 @@ export default function ExplainPage() {
 
   const tabs: { key: typeof tab; label: string | React.ReactNode }[] = [
     { key: 'rights', label: t('explain.tabs.rights') },
-    { key: 'ai', label: <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><Bot size={14} /> Ask AI</span> },
+    { key: 'ai', label: <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><Bot size={14} /> {isHi ? 'AI से पूछें' : 'Ask AI'}</span> },
     { key: 'checklist', label: t('explain.tabs.checklist') },
     { key: 'procedure', label: t('explain.tabs.procedure') },
     { key: 'help', label: t('explain.tabs.help') },
@@ -74,7 +74,7 @@ export default function ExplainPage() {
 
           {/* Tab content */}
           {tab === 'rights' && <DualDisplayPanel situation={situation} />}
-          {tab === 'ai' && <AIChatbox situation={situation} />}
+          {tab === 'ai' && <GeminiChat situation={situation} />}
           {tab === 'checklist' && <DocumentChecklist situation={situation} />}
           {tab === 'procedure' && <ProcedureStepper situation={situation} />}
           {tab === 'help' && (

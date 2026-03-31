@@ -48,3 +48,5 @@ env/
 # ide/editors
 .vscode/
 .idea/
+COMPLETION_REPORT.md
+todo.md

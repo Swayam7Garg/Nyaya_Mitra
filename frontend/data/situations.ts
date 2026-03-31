@@ -974,6 +974,226 @@ const situations: Situation[] = [
       }
     ],
     "templateType": "complaint"
+  },
+  {
+    "id": "labor-rights",
+    "category": "Employment",
+    "icon": "Briefcase",
+    "title": {
+      "en": "Labor Rights / Wage Theft",
+      "hi": "श्रमिक अधिकार / वेतन चोरी"
+    },
+    "description": {
+      "en": "Unpaid wages, illegal deductions, denial of PF/ESI, wrongful termination, or unfair working conditions.",
+      "hi": "अवैतनिक मजदूरी, अवैध कटौती, PF/ESI से इनकार, गलत बर्खास्तगी या अनुचित कार्य स्थिति।"
+    },
+    "rights": [
+      {
+        "title": {
+          "en": "Right to Minimum Wage",
+          "hi": "न्यूनतम वेतन का अधिकार"
+        },
+        "description": {
+          "en": "Every worker is entitled to the minimum wage set by the state government. No employer can pay less than this, even with worker's agreement.",
+          "hi": "प्रत्येक श्रमिक को राज्य सरकार द्वारा निर्धारित न्यूनतम वेतन पाने का अधिकार है।"
+        }
+      },
+      {
+        "title": {
+          "en": "Right to Timely Payment",
+          "hi": "समय पर भुगतान का अधिकार"
+        },
+        "description": {
+          "en": "Wages must be paid on time — by the 7th of the following month. Delay is a punishable offence.",
+          "hi": "वेतन अगले महीने की 7 तारीख तक दिया जाना चाहिए। देरी दंडनीय अपराध है।"
+        }
+      },
+      {
+        "title": {
+          "en": "Right to Provident Fund (PF)",
+          "hi": "भविष्य निधि (PF) का अधिकार"
+        },
+        "description": {
+          "en": "Employees in establishments with 20+ workers are entitled to PF deduction and employer contribution under EPF Act.",
+          "hi": "20+ कर्मचारी वाले प्रतिष्ठानों में कर्मचारी PF के हकदार हैं।"
+        }
+      },
+      {
+        "title": {
+          "en": "Right Against Illegal Deductions",
+          "hi": "अवैध कटौती के खिलाफ अधिकार"
+        },
+        "description": {
+          "en": "No employer can make deductions from wages except those specifically authorized by law (PF, ESI, TDS).",
+          "hi": "नियोक्ता केवल कानूनी कटौतियां ही कर सकता है।"
+        }
+      }
+    ],
+    "laws": [
+      {
+        "section": "Section 3",
+        "act": "Minimum Wages Act, 1948",
+        "summary": {
+          "en": "Employers must pay not less than the minimum rates fixed by appropriate government for scheduled employments.",
+          "hi": "नियोक्ता को अनुसूचित रोजगार के लिए निर्धारित न्यूनतम दरों से कम वेतन नहीं देना चाहिए।"
+        },
+        "fullText": "The appropriate Government shall fix the minimum rates of wages payable to employees employed in a scheduled employment... No employer shall pay to any employee wages at a rate less than the minimum rate of wages fixed by the Government."
+      },
+      {
+        "section": "Section 5",
+        "act": "Payment of Wages Act, 1936",
+        "summary": {
+          "en": "All wages must be paid before the 7th of every month. Employers cannot delay or deny wages arbitrarily.",
+          "hi": "सभी वेतन हर महीने की 7 तारीख से पहले देना अनिवार्य है।"
+        },
+        "fullText": "The wages of every person employed in a factory or establishment shall be paid before the expiry of the seventh day of the following wage period... Every employer shall be responsible for the payment of all wages required to be paid under this Act."
+      },
+      {
+        "section": "Section 6",
+        "act": "Employees' Provident Fund Act, 1952",
+        "summary": {
+          "en": "Both employee and employer must contribute 12% of basic salary to the PF fund each month.",
+          "hi": "कर्मचारी और नियोक्ता दोनों को मूल वेतन का 12% PF में जमा करना होगा।"
+        },
+        "fullText": "Subject to the provisions of this Act, the Central Government may, by notification in the Official Gazette, frame a Scheme to be called the Employees' Provident Fund Scheme for the establishment of provident funds under this Act..."
+      }
+    ],
+    "checklist": [
+      {
+        "id": "lr1",
+        "item": {
+          "en": "Appointment letter / Offer letter",
+          "hi": "नियुक्ति पत्र / ऑफर लेटर"
+        },
+        "required": true
+      },
+      {
+        "id": "lr2",
+        "item": {
+          "en": "Salary slips for the period of dispute",
+          "hi": "विवाद की अवधि की वेतन पर्चियां"
+        },
+        "required": true
+      },
+      {
+        "id": "lr3",
+        "item": {
+          "en": "Bank statements showing salary credits (or lack thereof)",
+          "hi": "बैंक विवरण जिसमें वेतन क्रेडिट दिखे"
+        },
+        "required": true
+      },
+      {
+        "id": "lr4",
+        "item": {
+          "en": "PF account statement (EPFO UAN portal)",
+          "hi": "PF खाता विवरण (EPFO UAN पोर्टल)"
+        },
+        "required": false
+      },
+      {
+        "id": "lr5",
+        "item": {
+          "en": "Written communication / emails about wage dispute",
+          "hi": "वेतन विवाद के बारे में लिखित पत्राचार / ईमेल"
+        },
+        "required": false
+      },
+      {
+        "id": "lr6",
+        "item": {
+          "en": "Attendance records / proof of work done",
+          "hi": "उपस्थिति रिकॉर्ड / कार्य का प्रमाण"
+        },
+        "required": true
+      },
+      {
+        "id": "lr7",
+        "item": {
+          "en": "Termination letter (if employment ended)",
+          "hi": "बर्खास्तगी पत्र (यदि नौकरी समाप्त हो गई)"
+        },
+        "required": false
+      }
+    ],
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Calculate Dues and Document",
+          "hi": "बकाया की गणना करें"
+        },
+        "description": {
+          "en": "Calculate the exact amount of unpaid wages, illegal deductions, or PF dues. Make a written record.",
+          "hi": "अवैतनिक मजदूरी, अवैध कटौती या PF बकाया की सटीक राशि की गणना करें।"
+        },
+        "tip": {
+          "en": "Keep copies of all payslips and bank statements as primary evidence.",
+          "hi": "प्राथमिक साक्ष्य के रूप में सभी वेतन पर्चियों और बैंक विवरणों की प्रति रखें।"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Send Written Demand to Employer",
+          "hi": "नियोक्ता को लिखित मांग भेजें"
+        },
+        "description": {
+          "en": "Send a written demand notice to your employer via registered post, stating the exact amount due and giving 15 days to pay.",
+          "hi": "नियोक्ता को रजिस्टर्ड डाक से लिखित मांग नोटिस भेजें।"
+        },
+        "tip": {
+          "en": "Always keep the postal receipt as proof the notice was sent.",
+          "hi": "डाक रसीद हमेशा रखें।"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "File Complaint with Labour Inspector",
+          "hi": "श्रम निरीक्षक को शिकायत दर्ज करें"
+        },
+        "description": {
+          "en": "Visit your district Labour Office and file a complaint with the Labour Inspector under the Payment of Wages Act or Minimum Wages Act.",
+          "hi": "जिला श्रम कार्यालय में जाएं और श्रम निरीक्षक को शिकायत दर्ज करें।"
+        },
+        "tip": {
+          "en": "Labour Inspector has powers to examine records and penalize employers.",
+          "hi": "श्रम निरीक्षक के पास रिकॉर्ड जांचने और नियोक्ता को दंड देने का अधिकार है।"
+        }
+      },
+      {
+        "stepNumber": 4,
+        "title": {
+          "en": "Approach Labour Court",
+          "hi": "श्रम न्यायालय जाएं"
+        },
+        "description": {
+          "en": "If Labour Inspector fails to resolve, file a claim application before the Labour Court or Industrial Tribunal for recovery of wages.",
+          "hi": "यदि श्रम निरीक्षक समाधान न करें, तो श्रम न्यायालय में दावा दर्ज करें।"
+        },
+        "tip": {
+          "en": "Free legal aid is available for workers through State Legal Services Authority.",
+          "hi": "राज्य विधिक सेवा प्राधिकरण के माध्यम से श्रमिकों को मुफ्त कानूनी सहायता उपलब्ध है।"
+        }
+      },
+      {
+        "stepNumber": 5,
+        "title": {
+          "en": "File EPF Grievance Online",
+          "hi": "EPF शिकायत ऑनलाइन दर्ज करें"
+        },
+        "description": {
+          "en": "For PF-related issues, file grievance at epfigms.gov.in or call EPFO toll-free 1800-118-005.",
+          "hi": "PF से संबंधित समस्याओं के लिए epfigms.gov.in पर शिकायत दर्ज करें।"
+        },
+        "tip": {
+          "en": "EPFO can directly penalize employers for PF defaults under Section 14B EPF Act.",
+          "hi": "EPFO EPF अधिनियम की धारा 14B के तहत नियोक्ताओं को सीधे दंड दे सकता है।"
+        }
+      }
+    ],
+    "templateType": "complaint"
   }
 ];
 

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Download, Copy, Check, FileText } from 'lucide-react';
 import DocumentForm from '../../../components/generate/DocumentForm';
 import DocumentPreview, { makeComplaintText, makeRTIText } from '../../../components/generate/DocumentPreview';
-import { generateComplaintPDF, generateRTIPDF } from '../../../lib/pdfGenerator';
+import { generateComplaintPDF, generateRTIPDF, generateFIRDraftPDF } from '../../../lib/pdfGenerator';
 import situationsData from '../../../data/situations';
 import type { DocumentFormData } from '../../../types';
 
@@ -18,16 +18,18 @@ const lawCitations: Record<string, string> = {
   'rti-application': 'Right to Information Act 2005 (Section 6)',
   'domestic-violence': 'Protection of Women from Domestic Violence Act 2005 (Section 12)',
   'property-dispute': 'Code of Criminal Procedure 1973 (Section 145)',
+  'labor-rights': 'Minimum Wages Act 1948 (Section 3), Payment of Wages Act 1936 (Section 5)',
 };
 
 const docTitles: Record<string, string> = {
   'landlord-dispute': 'Complaint Letter to Local Authority',
   'consumer-complaint': 'Consumer Complaint Letter',
   'workplace-harassment': 'Workplace Harassment Complaint',
-  'fir-filing': 'Complaint Letter to Police',
+  'fir-filing': 'FIR Draft / Police Complaint',
   'rti-application': 'RTI Application',
   'domestic-violence': 'Complaint to Protection Officer',
   'property-dispute': 'Property Encroachment Complaint',
+  'labor-rights': 'Wage / Labour Rights Complaint',
 };
 
 const EMPTY: DocumentFormData = { name: '', address: '', phone: '', date: '', incidentDate: '', description: '', amount: '', respondentName: '', respondentAddress: '', authority: '', infoRequested: '' };
@@ -53,8 +55,24 @@ export default function GeneratePage() {
   const handleChange = (key: keyof DocumentFormData, val: string) => setFields(prev => ({ ...prev, [key]: val }));
 
   const handleDownload = () => {
-    if (templateType === 'rti') generateRTIPDF(fields);
-    else generateComplaintPDF(fields, docTitle, lawCite);
+    if (templateType === 'rti') {
+      generateRTIPDF(fields);
+    } else if (templateType === 'fir') {
+      generateFIRDraftPDF({
+        policeStationName: fields.respondentName || 'Local Police Station',
+        policeStationAddress: fields.respondentAddress || '',
+        complainantName: fields.name,
+        complainantAddress: fields.address,
+        complainantPhone: fields.phone,
+        incidentDate: fields.incidentDate,
+        incidentTime: '',
+        incidentLocation: '',
+        incidentDescription: fields.description,
+        date: fields.date,
+      });
+    } else {
+      generateComplaintPDF(fields, docTitle, lawCite);
+    }
   };
 
   const handleCopy = () => {

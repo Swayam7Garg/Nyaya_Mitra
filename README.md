@@ -33,7 +33,7 @@ graph TD
     LocalBridge[Frontend API Routes]
     Express[Node.js + Express Backend]
     MongoDB[(MongoDB Atlas)]
-    LLM[OpenAI GPT-4o API]
+    LLM[Google Gemini 1.5 Flash API]
 
     Client <-->|Bilingual UI & PDF Generation| NextJS
     NextJS <-->|REST| LocalBridge
@@ -132,7 +132,7 @@ Create an \`.env\` file in the \`backend\` folder with the following keys:
 PORT=5000
 NODE_ENV=development
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/legalaid?retryWrites=true&w=majority
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+GEMINI_API_KEY=AIzaSy_YOUR_GEMINI_API_KEY_HERE
 FRONTEND_URL=http://localhost:3000
 \`\`\`
 

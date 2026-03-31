@@ -43,7 +43,7 @@ const situationSchema = new mongoose.Schema(
     ],
     templateType: {
       type: String,
-      enum: ["rti", "complaint", "both", "none"],
+      enum: ["rti", "complaint", "both", "none", "fir", "labor"],
       default: "none",
     },
   },

@@ -33,7 +33,7 @@ export interface Situation {
   laws: LawSection[];
   checklist: ChecklistItem[];
   steps: ProcedureStep[];
-  templateType: 'rti' | 'complaint';
+  templateType: 'rti' | 'complaint' | 'fir' | 'labor';
 }
 export interface Lawyer {
   id: string;
