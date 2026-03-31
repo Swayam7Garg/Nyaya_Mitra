@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "situations": "Situations",
+    "lawyers": "Lawyers",
+    "about": "About",
+    "home": "Home"
+  },
+  "home": {
+    "hero_title": "Know Your Rights",
+    "hero_title_hi": "अपना हक जानिए",
+    "hero_sub": "India's free AI-powered legal aid platform — plain language rights for every citizen.",
+    "cta": "Get Started",
+    "trust1_num": "45M+",
+    "trust1_label": "Pending cases in India",
+    "trust2_num": "Free",
+    "trust2_label": "Legal Aid for all",
+    "trust3_num": "Article 39A",
+    "trust3_label": "Constitutionally Guaranteed"
+  },
+  "disclaimer": {
+    "text": "This platform provides legal information, not legal advice. For complex matters, consult a qualified lawyer. Content is sourced from official Indian law databases.",
+    "dismiss": "Dismiss"
+  },
+  "situations": {
+    "page_title": "What situation are you facing?",
+    "page_sub": "Select the category that best matches your situation",
+    "landlord": {
+      "name": "Landlord Dispute",
+      "desc": "Illegal eviction, deposit refusals, uninhabitable conditions."
+    },
+    "consumer": {
+      "name": "Consumer Complaint",
+      "desc": "Defective products, unfair practices, overcharging."
+    },
+    "workplace": {
+      "name": "Workplace Harassment",
+      "desc": "Sexual harassment, wrongful termination, discrimination."
+    },
+    "fir": {
+      "name": "FIR Filing",
+      "desc": "File a First Information Report with the police."
+    },
+    "rti": {
+      "name": "RTI Application",
+      "desc": "Get information from any government office."
+    },
+    "domestic": {
+      "name": "Domestic Violence",
+      "desc": "Abuse by a spouse, partner, or family member."
+    },
+    "property": {
+      "name": "Property Dispute",
+      "desc": "Land ownership, inheritance, illegal encroachment."
+    }
+  },
+  "explain": {
+    "tabs": {
+      "rights": "Your Rights",
+      "checklist": "Document Checklist",
+      "procedure": "Step-by-Step",
+      "help": "Get Legal Help"
+    },
+    "plain_title": "In simple terms:",
+    "law_title": "Original Law",
+    "source": "Source: indiacode.nic.in",
+    "ai_badge": "AI summary + verified law text",
+    "view_law": "View Original Law",
+    "checklist_title": "Documents you will need",
+    "progress": "{{done}} of {{total}} documents ready",
+    "download_checklist": "Download Checklist as PDF",
+    "step_time": "Est. time:",
+    "get_help_title": "Need legal assistance?",
+    "find_lawyer": "Find a Pro Bono Lawyer Near You",
+    "generate_docs": "Generate My Documents",
+    "loading": "Loading AI explanation...",
+    "fallback": "Could not load AI explanation — showing default content."
+  },
+  "generate": {
+    "page_title": "Generate Document",
+    "step1": "Personal Details",
+    "step2": "Incident Details",
+    "step3": "Preview & Download",
+    "name": "Full Name",
+    "address": "Address",
+    "phone": "Phone Number",
+    "date": "Date",
+    "incident_date": "Date of Incident",
+    "description": "Description",
+    "amount": "Amount (if applicable)",
+    "respondent_name": "Respondent Name",
+    "respondent_address": "Respondent Address",
+    "authority": "Public Authority / Department",
+    "info_requested": "Information Requested",
+    "next": "Next",
+    "back": "Back",
+    "download_pdf": "Download as PDF",
+    "download_hindi": "Download in Hindi",
+    "copy": "Copy to Clipboard",
+    "copied": "Copied!",
+    "preview_title": "Document Preview",
+    "disclaimer": "This is a template. Review before submission. Platform is not responsible for legal outcomes.",
+    "generating": "Generating..."
+  },
+  "lawyers": {
+    "page_title": "Pro Bono Legal Aid Lawyers",
+    "page_sub": "Connect with lawyers who provide free legal services",
+    "filter_city": "Filter by City",
+    "filter_area": "Practice Area",
+    "filter_lang": "Language",
+    "all_cities": "All Cities",
+    "all_areas": "All Areas",
+    "all_langs": "All Languages",
+    "verified": "Verified",
+    "pro_bono": "Available for Pro Bono",
+    "experience": "yrs exp",
+    "languages": "Languages",
+    "contact": "Contact Lawyer",
+    "no_results": "No lawyers found. Try a different city or practice area.",
+    "disclaimer": "Listing here is not an endorsement. Verify credentials independently.",
+    "nalsa_id": "NALSA/Bar Council ID"
+  },
+  "about": {
+    "title": "About NyayaSaathi",
+    "mission_title": "Our Mission",
+    "mission": "NyayaSaathi exists to bridge the justice gap for India's first-generation litigants — citizens who face legal problems but have never engaged with the legal system. We provide plain-language rights information, AI-powered explanations, and free document templates.",
+    "how_title": "How It Works",
+    "tech_title": "Technology Used",
+    "sources_title": "Law Sources",
+    "ai_title": "Responsible AI",
+    "ai_text": "Every AI-generated explanation is shown alongside the original law text from IndiaCode. We use dual-display to ensure transparency — you always see both the simplified version and the source law.",
+    "team_title": "Built For",
+    "team_text": "This platform was built as a hackathon project to demonstrate responsible, accessible, bilingual AI for legal aid in India."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again.",
+    "back": "Back",
+    "required": "Required",
+    "optional": "Optional"
+  }
+}
