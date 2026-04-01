@@ -61,7 +61,7 @@ function TypingIndicator() {
         <span
           key={i}
           style={{
-            width: 8, height: 8, borderRadius: '50%', background: '#1a56db',
+            width: 8, height: 8, borderRadius: '50%', background: '#923c22',
             display: 'inline-block',
             animation: 'typingDot 1.2s infinite ease-in-out',
             animationDelay: `${i * 0.2}s`
@@ -211,8 +211,8 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
         display: 'flex', flexDirection: 'column',
         background: 'white',
         borderRadius: 16,
-        border: '1px solid #e2e8f0',
-        boxShadow: '0 4px 20px rgba(26,86,219,0.08)',
+        border: '1px solid #EAE1DA',
+        boxShadow: '0 4px 20px rgba(146, 60, 34, 0.08)',
         overflow: 'hidden',
         height: 640,
         maxHeight: '80vh',
@@ -222,7 +222,7 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '16px 20px',
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1a56db 100%)',
+          background: 'linear-gradient(135deg, #1A1A1A 0%, #732F1A 60%, #923C22 100%)',
           borderBottom: '1px solid rgba(255,255,255,0.1)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -304,7 +304,7 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
                 {/* Avatar */}
                 <div style={{
                   width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-                  background: isUser ? '#1a56db' : '#0f172a',
+                  background: isUser ? '#923c22' : '#1A1A1A',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                 }}>
@@ -318,10 +318,10 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
                   <div style={{
                     padding: '12px 16px',
                     borderRadius: isUser ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
-                    background: isUser ? 'linear-gradient(135deg, #1a56db, #1e40af)' : 'white',
-                    border: isUser ? 'none' : msg.isError ? '1px solid #fecaca' : '1px solid #e2e8f0',
+                    background: isUser ? 'linear-gradient(135deg, #923c22, #732F1A)' : 'white',
+                    border: isUser ? 'none' : msg.isError ? '1px solid #fecaca' : '1px solid #EAE1DA',
                     boxShadow: isUser
-                      ? '0 2px 8px rgba(26,86,219,0.3)'
+                      ? '0 2px 8px rgba(146, 60, 34, 0.3)'
                       : '0 1px 4px rgba(0,0,0,0.06)',
                   }}>
                     {isUser ? (
@@ -350,7 +350,7 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
             <div className="chat-bubble-in" style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
               <div style={{
                 width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-                background: '#0f172a',
+                background: '#1A1A1A',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <Scale size={16} color="white" />
@@ -359,7 +359,7 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
                 padding: '12px 18px',
                 borderRadius: '18px 18px 18px 4px',
                 background: 'white',
-                border: '1px solid #e2e8f0',
+                border: '1px solid #EAE1DA',
                 boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
               }}>
                 <TypingIndicator />
@@ -402,14 +402,14 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
                   key={i}
                   onClick={() => { setInput(q); setCharCount(q.length); inputRef.current?.focus(); }}
                   style={{
-                    background: '#eff6ff', color: '#1a56db',
-                    border: '1px solid #dbeafe', borderRadius: 20,
+                    background: '#FCF5EF', color: '#923c22',
+                    border: '1px solid #EAE1DA', borderRadius: 20,
                     padding: '5px 12px', fontSize: 12, fontWeight: 500,
                     fontFamily: hFont, cursor: 'pointer',
                     transition: 'background 0.15s',
                   }}
-                  onMouseOver={e => (e.currentTarget.style.background = '#dbeafe')}
-                  onMouseOut={e => (e.currentTarget.style.background = '#eff6ff')}
+                  onMouseOver={e => (e.currentTarget.style.background = '#EAE1DA')}
+                  onMouseOut={e => (e.currentTarget.style.background = '#FCF5EF')}
                 >
                   {q}
                 </button>
@@ -417,7 +417,7 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
             </div>
           )}
 
-          <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end' }}>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
             <div style={{ flex: 1, position: 'relative' }}>
               <textarea
                 ref={inputRef}
@@ -439,13 +439,11 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
                   border: '1.5px solid #e2e8f0', borderRadius: 12,
                   fontSize: 14, fontFamily: hFont, lineHeight: 1.5,
                   resize: 'none', outline: 'none',
-                  transition: 'border-color 0.2s, box-shadow 0.2s',
-                  background: loading ? '#f8fafc' : 'white',
-                  color: '#0f172a',
+                  color: '#1A1A1A',
                 }}
                 onFocus={e => {
-                  e.target.style.borderColor = '#1a56db';
-                  e.target.style.boxShadow = '0 0 0 3px rgba(26,86,219,0.1)';
+                  e.target.style.borderColor = '#923c22';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(146, 60, 34, 0.1)';
                 }}
                 onBlur={e => {
                   e.target.style.borderColor = '#e2e8f0';
@@ -467,11 +465,11 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
               aria-label={isHi ? 'संदेश भेजें' : 'Send message'}
               style={{
                 width: 48, height: 48, borderRadius: 12, flexShrink: 0,
-                background: loading || !input.trim() ? '#e2e8f0' : 'linear-gradient(135deg, #1a56db, #1e40af)',
+                background: loading || !input.trim() ? '#EAE1DA' : 'linear-gradient(135deg, #923c22, #732F1A)',
                 border: 'none', cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'all 0.2s',
-                boxShadow: loading || !input.trim() ? 'none' : '0 4px 12px rgba(26,86,219,0.35)',
+                boxShadow: loading || !input.trim() ? 'none' : '0 4px 12px rgba(146, 60, 34, 0.35)',
               }}
               onMouseOver={e => { if (!loading && input.trim()) e.currentTarget.style.transform = 'scale(1.05)'; }}
               onMouseOut={e => (e.currentTarget.style.transform = 'scale(1)')}

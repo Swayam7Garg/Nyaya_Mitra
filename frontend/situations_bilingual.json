@@ -1,0 +1,310 @@
+[
+  {
+    "id": "landlord-dispute",
+    "issue": {
+      "en": "Landlord Dispute",
+      "hi": "मकान मालिक विवाद"
+    },
+    "legal_framework": {
+      "en": [
+        "Article 21 - Right to life and shelter",
+        "Article 14 - Equality before law",
+        "Article 19(1)(d) - Right to reside",
+        "Article 300A - Right to property"
+      ],
+      "hi": [
+        "अनुच्छेद 21 - जीवन और आश्रय का अधिकार",
+        "अनुच्छेद 14 - कानून के समक्ष समानता",
+        "अनुच्छेद 19(1)(d) - निवास करने का अधिकार",
+        "अनुच्छेद 300A - संपत्ति का अधिकार"
+      ]
+    },
+    "rights": {
+      "en": [
+        "Protection from illegal eviction",
+        "Right to electricity and water",
+        "Privacy",
+        "Security deposit refund"
+      ],
+      "hi": [
+        "अवैध बेदखली से सुरक्षा",
+        "बिजली और पानी का अधिकार",
+        "निजता का अधिकार",
+        "सुरक्षा जमा (सिक्योरिटी डिपॉजिट) की वापसी"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "Rent Control Court",
+        "Civil Court",
+        "Police complaint in case of threats",
+        "Legal notice"
+      ],
+      "hi": [
+        "किराया नियंत्रण न्यायालय (रेंट कंट्रोल कोर्ट)",
+        "व्यवहार न्यायालय (सिविल कोर्ट)",
+        "धमकी के मामले में पुलिस शिकायत",
+        "कानूनी नोटिस"
+      ]
+    }
+  },
+  {
+    "id": "consumer-complaint",
+    "issue": {
+      "en": "Consumer Complaint – Rights of Citizens",
+      "hi": "उपभोक्ता शिकायत - नागरिकों के अधिकार"
+    },
+    "legal_framework": {
+      "en": ["Consumer Protection Act, 2019"],
+      "hi": ["उपभोक्ता संरक्षण अधिनियम, 2019"]
+    },
+    "rights": {
+      "en": [
+        "Right to Safety – protection against goods or services that are hazardous to life, health, or property.",
+        "Right to be Informed – complete, truthful information about quality, quantity, price, standard, warranty, expiry, risks, terms & conditions.",
+        "Right to Choose – free choice of products/services at fair prices without coercion.",
+        "Right to be Heard – consumers’ interests must be considered at appropriate forums and disputes may be heard by District, State or National Consumer Disputes Redressal Commissions.",
+        "Right to Seek Redressal – compensation, refund, replacement, repair or corrective action for defective goods, service deficiency, unfair trade practices, over-pricing, misleading ads or fraud.",
+        "Right to Consumer Awareness – authorities must promote awareness of consumer rights and legal remedies."
+      ],
+      "hi": [
+        "सुरक्षा का अधिकार - जीवन, स्वास्थ्य या संपत्ति के लिए खतरनाक वस्तुओं या सेवाओं के खिलाफ सुरक्षा।",
+        "सूचित होने का अधिकार - गुणवत्ता, मात्रा, मूल्य, मानक, वारंटी, समाप्ति, जोखिम, नियम एवं शर्तों के बारे में पूरी और सच्ची जानकारी।",
+        "चुनने का अधिकार - बिना किसी दबाव के उचित मूल्य पर उत्पादों/सेवाओं का स्वतंत्र विकल्प।",
+        "सुने जाने का अधिकार - उचित मंचों पर उपभोक्ताओं के हितों पर विचार किया जाना चाहिए और विवादों को जिला, राज्य या राष्ट्रीय उपभोक्ता विवाद निवारण आयोगों द्वारा सुना जा सकता है।",
+        "निवारण मांगने का अधिकार - दोषपूर्ण वस्तुओं, सेवा में कमी, अनुचित व्यापार प्रथाओं, अधिक मूल्य निर्धारण, भ्रामक विज्ञापनों या धोखाधड़ी के लिए मुआवजा, रिफंड, प्रतिस्थापन या सुधारात्मक कार्रवाई।",
+        "उपभोक्ता जागरूकता का अधिकार - अधिकारियों को उपभोक्ता अधिकारों और कानूनी उपचारों के बारे में जागरूकता बढ़ानी चाहिए।"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "A complaint may be filed with the Consumer Disputes Redressal Commission within jurisdiction, electronically or in person, accompanied by requisite fee.",
+        "Scope: Covers goods and services, e-commerce, direct selling, unfair contract, unsafe products and deficiency in services."
+      ],
+      "hi": [
+        "अधिकार क्षेत्र के भीतर उपभोक्ता विवाद निवारण आयोग में इलेक्ट्रॉनिक रूप से या व्यक्तिगत रूप से, आवश्यक शुल्क के साथ शिकायत दर्ज की जा सकती है।",
+        "दायरा: इसमें माल और सेवाएं, ई-कॉमर्स, प्रत्यक्ष बिक्री, अनुचित अनुबंध, असुरक्षित उत्पाद और सेवाओं में कमी शामिल है।"
+      ]
+    }
+  },
+  {
+    "id": "workplace-harassment",
+    "issue": {
+      "en": "Workplace Harassment – Rights of Citizens",
+      "hi": "कार्यस्थल पर उत्पीड़न - नागरिकों के अधिकार"
+    },
+    "legal_framework": {
+      "en": ["Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 (POSH Act)", "Articles 14, 15 & 21 of the Constitution"],
+      "hi": ["कार्यस्थल पर महिलाओं का यौन उत्पीड़न (रोकथाम, निषेध और निवारण) अधिनियम, 2013 (POSH अधिनियम)", "संविधान के अनुच्छेद 14, 15 और 21"]
+    },
+    "rights": {
+      "en": [
+        "Every worker has the right to a safe, dignified, harassment-free workplace.",
+        "Sexual harassment includes physical contact, unwelcome advances, sexually coloured remarks, intimidation, threats, hostile work environment.",
+        "Mandatory Requirement: Every employer with 10 or more employees must constitute an Internal Complaints Committee (ICC)."
+      ],
+      "hi": [
+        "प्रत्येक कर्मचारी को सुरक्षित, सम्मानजनक और उत्पीड़न-मुक्त कार्यस्थल का अधिकार है।",
+        "यौन उत्पीड़न में शारीरिक संपर्क, अवांछित प्रस्ताव, यौन रूप से रंगे हुए आरोप, डराना, धमकाना या शत्रुतापूर्ण कार्य वातावरण शामिल है।",
+        "अनिवार्य आवश्यकता: 10 या अधिक कर्मचारियों वाले प्रत्येक नियोक्ता को एक आंतरिक शिकायत समिति (ICC) का गठन करना होगा।"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "Complaint Timeline: File within 90 days of the last incident.",
+        "The ICC must conduct a confidential inquiry and complete it within 90 days, with interim relief where warranted.",
+        "Victims may also pursue criminal charges (e.g., under IPC sections like 354A) and file an FIR in addition to ICC complaint."
+      ],
+      "hi": [
+        "शिकायत की समय-सीमा: अंतिम घटना के 90 दिनों के भीतर शिकायत दर्ज करें।",
+        "ICC को गोपनीय जांच करनी होगी और इसे 90 दिनों के भीतर पूरा करना होगा, जहां आवश्यक हो, अंतरिम राहत दी जाएगी।",
+        "पीड़ित ICC शिकायत के अलावा आपराधिक आरोप (जैसे IPC की धारा 354A के तहत) भी लगा सकते हैं और FIR दर्ज कर सकते हैं।"
+      ]
+    }
+  },
+  {
+    "id": "fir-filing",
+    "issue": {
+      "en": "FIR Filing – Rights of Citizens",
+      "hi": "FIR दर्ज करना - नागरिकों के अधिकार"
+    },
+    "legal_framework": {
+      "en": ["Code of Criminal Procedure (CrPC) - Section 154"],
+      "hi": ["दंड प्रक्रिया संहिता (CrPC) - धारा 154"]
+    },
+    "rights": {
+      "en": [
+        "Every citizen has the right to file a First Information Report (FIR) with the police for any cognizable offence (e.g., theft, assault, fraud, kidnapping, violence)."
+      ],
+      "hi": [
+        "प्रत्येक नागरिक को किसी भी संज्ञेय अपराध (जैसे चोरी, हमला, धोखाधड़ी, अपहरण, हिंसा) के लिए पुलिस में प्रथम सूचना रिपोर्ट (FIR) दर्ज करने का अधिकार है।"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "Police must record FIR for information regarding a cognizable offence.",
+        "Police must register FIR if the complaint discloses a cognizable offence and not refuse on non-legal grounds.",
+        "After FIR registration, police must investigate; refusal or delay can be challenged via High Court writ.",
+        "An FIR filed becomes a public record of the criminal complaint and starts investigation."
+      ],
+      "hi": [
+        "संज्ञेय अपराध के संबंध में सूचना मिलने पर पुलिस को FIR दर्ज करनी होगी।",
+        "यदि शिकायत में किसी संज्ञेय अपराध का खुलासा होता है, तो पुलिस को FIR दर्ज करनी होगी और वे गैर-कानूनी आधार पर मना नहीं कर सकते।",
+        "FIR दर्ज होने के बाद पुलिस को जांच करनी होगी; इनकार या देरी को उच्च न्यायालय (High Court) में रिट के माध्यम से चुनौती दी जा सकती है।",
+        "दर्ज की गई FIR आपराधिक शिकायत का सार्वजनिक रिकॉर्ड बन जाती है और जांच शुरू हो जाती है।"
+      ]
+    }
+  },
+  {
+    "id": "rti-application",
+    "issue": {
+      "en": "RTI Application – Rights of Citizens",
+      "hi": "RTI आवेदन - नागरिकों के अधिकार"
+    },
+    "legal_framework": {
+      "en": ["Right to Information Act, 2005 (RTI Act) - Sections 3 and 6"],
+      "hi": ["सूचना का अधिकार अधिनियम, 2005 (RTI अधिनियम) - धारा 3 और 6"]
+    },
+    "rights": {
+      "en": [
+        "Every citizen has the right to access information held by public authorities to promote transparency and accountability (Section 3).",
+        "Right to file RTI application to the Public Information Officer (PIO) (Section 6)."
+      ],
+      "hi": [
+        "पारदर्शिता और जवाबदेही को बढ़ावा देने के लिए प्रत्येक नागरिक को सार्वजनिक प्राधिकरणों द्वारा रखी गई जानकारी तक पहुंचने का अधिकार है (धारा 3)।",
+        "लोक सूचना अधिकारी (PIO) को RTI आवेदन दाखिल करने का अधिकार (धारा 6)।"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "File RTI to the PIO with details of information sought.",
+        "Public authority must respond within 30 days (or 48 hours if life/death involved).",
+        "If denied, file First Appeal then Second Appeal to Central/State Information Commission.",
+        "Scope: Government records, police records, enquiry reports, action taken, expenditure, orders and policy documents."
+      ],
+      "hi": [
+        "मांगी गई जानकारी के विवरण के साथ PIO के पास RTI दाखिल करें।",
+        "सार्वजनिक प्राधिकरण को 30 दिनों के भीतर (या जीवन/मृत्यु शामिल होने पर 48 घंटों के भीतर) जवाब देना होगा।",
+        "यदि जानकारी देने से मना किया जाता है, तो केंद्रीय/राज्य सूचना आयोग में पहली अपील और फिर दूसरी अपील दायर करें।",
+        "दायरा: सरकारी रिकॉर्ड, पुलिस रिकॉर्ड, जांच रिपोर्ट, की गई कार्रवाई, व्यय, आदेश और नीतिगत दस्तावेज।"
+      ]
+    }
+  },
+  {
+    "id": "domestic-violence",
+    "issue": {
+      "en": "Domestic Violence – Rights of Citizens",
+      "hi": "घरेलू हिंसा - नागरिकों के अधिकार"
+    },
+    "legal_framework": {
+      "en": ["Protection of Women from Domestic Violence Act, 2005 (PWDVA) - Sections 3 and 12"],
+      "hi": ["घरेलू हिंसा से महिलाओं का संरक्षण अधिनियम, 2005 (PWDVA) - धारा 3 और 12"]
+    },
+    "rights": {
+      "en": [
+        "Women have the right to protection from physical, emotional, verbal, sexual, and economic abuse by family or intimate partners.",
+        "Right to apply for Protection Order, Residence Order, Monetary Relief, Custody Order and Compensation Order (Section 12)."
+      ],
+      "hi": [
+        "महिलाओं को परिवार या अंतरंग भागीदारों द्वारा शारीरिक, भावनात्मक, मौखिक, यौन और आर्थिक शोषण से सुरक्षा का अधिकार है।",
+        "सुरक्षा आदेश, निवास आदेश, मौद्रिक राहत, हिरासत आदेश और मुआवजा आदेश के लिए आवेदन करने का अधिकार (धारा 12)।"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "Complaint may be filed to Protection Officer / Judicial Magistrate.",
+        "Magistrate may grant interim protection, residency rights, monetary compensation and counseling.",
+        "Police assistance can be sought to enforce orders."
+      ],
+      "hi": [
+        "शिकायत संरक्षण अधिकारी / न्यायिक मजिस्ट्रेट को दर्ज की जा सकती है।",
+        "मजिस्ट्रेट अंतरिम सुरक्षा, रहने का अधिकार, मौद्रिक मुआवजा और परामर्श प्रदान कर सकता है।",
+        "आदेशों को लागू करने के लिए पुलिस की सहायता ली जा सकती है।"
+      ]
+    }
+  },
+  {
+    "id": "property-dispute",
+    "issue": {
+      "en": "Property Dispute – Rights of Citizens",
+      "hi": "संपत्ति विवाद - नागरिकों के अधिकार"
+    },
+    "legal_framework": {
+      "en": ["Transfer of Property Act, 1882", "Indian Succession Act", "Registration Act, 1908", "Limitation Act"],
+      "hi": ["संपत्ति हस्तांतरण अधिनियम, 1882", "भारतीय उत्तराधिकार अधिनियम", "पंजीकरण अधिनियम, 1908", "सीमा अधिनियम (लिमिटेशन एक्ट)"]
+    },
+    "rights": {
+      "en": [
+        "A citizen has the right to own, use, transfer and enjoy property as per contract and law.",
+        "Transfer of Property Act governs sale, mortgage, lease, gift, exchange of property.",
+        "Registered documents are prima facie evidence of the transaction."
+      ],
+      "hi": [
+        "एक नागरिक को अनुबंध और कानून के अनुसार संपत्ति के मालिक होने, उसका उपयोग करने, हस्तांतरण करने और उसका आनंद लेने का अधिकार है।",
+        "संपत्ति हस्तांतरण अधिनियम संपत्ति की बिक्री, बंधक, पट्टे, उपहार, और विनिमय को नियंत्रित करता है।",
+        "पंजीकृत दस्तावेज लेनदेन के प्रथम दृष्टया साक्ष्य हैं।"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "Title must be clear — disputes often arise due to forgery, bogus chain of title, boundary issues, adverse possession, co-ownership disagreements.",
+        "Property must be registered under the Registration Act to be enforceable.",
+        "Civil Courts have jurisdiction to adjudicate property suits; limitation periods apply for filing claims."
+      ],
+      "hi": [
+        "Title (स्वामित्व) स्पष्ट होना चाहिए — विवाद अक्सर जालसाजी, जाली कागजात, सीमा संबंधी समस्याओं, प्रतिकूल कब्जे, सह-स्वामित्व असहमतियों के कारण उत्पन्न होते हैं।",
+        "लागू होने के लिए संपत्ति का पंजीकरण अधिनियम के तहत पंजीकृत होना अनिवार्य है।",
+        "संपत्ति के मुकदमों पर फैसला सुनाने का अधिकार सिविल अदालतों के पास है; दावे दायर करने के लिए सीमा अवधि लागू होती है।"
+      ]
+    }
+  },
+  {
+    "id": "labour-rights",
+    "issue": {
+      "en": "Labour Rights – Rights of Citizens",
+      "hi": "श्रम अधिकार - नागरिकों के अधिकार"
+    },
+    "legal_framework": {
+      "en": [
+        "Industrial Disputes Act",
+        "Minimum Wages Act",
+        "Payment of Wages Act",
+        "Employees’ Provident Funds & Misc. Provisions Act",
+        "Workmen’s Compensation Act",
+        "Shops & Establishments Acts"
+      ],
+      "hi": [
+        "औद्योगिक विवाद अधिनियम",
+        "न्यूनतम मजदूरी अधिनियम",
+        "मजदूरी भुगतान अधिनियम",
+        "कर्मचारी भविष्य निधि और विविध प्रावधान अधिनियम",
+        "श्रमिक मुआवजा अधिनियम",
+        "दुकानें और प्रतिष्ठान अधिनियम"
+      ]
+    },
+    "rights": {
+      "en": [
+        "Right to fair wages – No employer can pay less than the minimum wages fixed by government.",
+        "Right to timely payment – Wages must be paid on time without unauthorized deductions.",
+        "Right to social security – Employees are entitled to provident fund, pension, insurance where applicable.",
+        "Right against unfair labour practices – Protection against discrimination, unfair termination, harassment, forced labour.",
+        "Right to compensation – Workmen injured during employment are employment entitled to compensation."
+      ],
+      "hi": [
+        "उचित मजदूरी का अधिकार - कोई भी नियोक्ता सरकार द्वारा निर्धारित न्यूनतम मजदूरी से कम भुगतान नहीं कर सकता है।",
+        "समय पर भुगतान का अधिकार - वेतन का भुगतान समय पर और बिना किसी अनधिकृत कटौती के होना चाहिए।",
+        "सामाजिक सुरक्षा का अधिकार - कर्मचारी भविष्य निधि, पेंशन, बीमा (जहां लागू हो) के हकदार हैं।",
+        "अनुचित श्रम प्रथाओं के खिलाफ अधिकार - भेदभाव, अनुचित निष्कासन, उत्पीड़न, और जबरन श्रम से सुरक्षा।",
+        "मुआवजे का अधिकार - रोजगार के दौरान घायल हुए श्रमिक मुआवजे के हकदार हैं।"
+      ]
+    },
+    "procedure": {
+      "en": [
+        "Dispute Resolution: Labour issues can be taken before Labour Courts, Industrial Tribunals, District Forums or appropriate statutory bodies."
+      ],
+      "hi": [
+        "विवाद समाधान: श्रम से संबंधित मुद्दों को श्रम न्यायालयों, औद्योगिक न्यायाधिकरणों, जिला मंचों या उपयुक्त वैधानिक निकायों के समक्ष ले जाया जा सकता है।"
+      ]
+    }
+  }
+]

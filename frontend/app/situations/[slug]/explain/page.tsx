@@ -31,12 +31,14 @@ export default function ExplainPage() {
     </div>
   );
 
+  const [checklistDone, setChecklistDone] = useState(false);
   const lang = i18n.language as 'en' | 'hi';
+  
   const steps = [
-    { label: 'Situations', href: '/situations', done: true, active: false },
-    { label: situation.title[lang], href: '#', done: false, active: true },
-    { label: 'Documents', href: '#', done: false, active: false },
-    { label: 'Generate', href: '#', done: false, active: false },
+    { label: t('nav.situations'), href: '/situations', done: true, active: false },
+    { label: situation.title[lang], href: '#', done: tab !== 'rights' && tab !== 'ai', active: tab === 'rights' || tab === 'ai' },
+    { label: t('explain.tabs.checklist'), href: '#', done: checklistDone, active: tab === 'checklist' || tab === 'procedure' },
+    { label: t('explain.generate_docs'), href: `/generate/${situation.id}`, done: false, active: tab === 'help' },
   ];
 
   const tabs: { key: typeof tab; label: string | React.ReactNode }[] = [
@@ -75,7 +77,7 @@ export default function ExplainPage() {
           {/* Tab content */}
           {tab === 'rights' && <DualDisplayPanel situation={situation} />}
           {tab === 'ai' && <GeminiChat situation={situation} />}
-          {tab === 'checklist' && <DocumentChecklist situation={situation} />}
+          {tab === 'checklist' && <DocumentChecklist situation={situation} onCompleteChange={setChecklistDone} />}
           {tab === 'procedure' && <ProcedureStepper situation={situation} />}
           {tab === 'help' && (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, padding: '40px 20px', textAlign: 'center' }}>

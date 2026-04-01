@@ -10,42 +10,42 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: '/situations', label: t('nav.situations') },
-    { href: '/lawyers', label: t('nav.lawyers') },
-    { href: '/about', label: t('nav.about') },
+    { href: '/situations', label: 'Situation Selector' },
+    { href: '#', label: 'Guides' },
+    { href: '/lawyers', label: 'Directory' },
   ];
 
   return (
     <nav style={{
-      background: 'white', borderBottom: '1px solid #e2e8f0',
+      background: '#FCF5EF', borderBottom: '1px solid #EAE1DA',
       position: 'sticky', top: 0, zIndex: 50,
-      boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+      fontFamily: 'Inter, sans-serif'
     }}>
       <div className="page-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 60 }}>
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-          <div style={{ background: '#1a56db', borderRadius: 8, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Scale size={18} color="white" />
-          </div>
-          <span style={{ fontSize: 18, fontWeight: 800, color: '#0f172a', letterSpacing: '-0.3px' }}>
-            Nyaya<span style={{ color: '#1a56db' }}>Saathi</span>
+          <span style={{ fontSize: 22, fontWeight: 800, color: '#923c22', letterSpacing: '-0.3px', fontFamily: 'Inter, sans-serif' }}>
+            NyayaMitra <span style={{ fontWeight: 600, fontFamily: 'Noto Sans Devanagari, sans-serif' }}>(न्यायमित्र)</span>
           </span>
         </Link>
 
         {/* Desktop nav */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-          <div style={{ display: 'flex', gap: 4 }}>
+          <div style={{ display: 'flex', gap: 16 }}>
             {links.map(l => (
               <Link key={l.href} href={l.href} style={{
-                padding: '6px 14px', borderRadius: 8, fontSize: 14, fontWeight: 500,
-                color: '#475569', textDecoration: 'none', transition: 'all 0.15s',
+                padding: '6px 12px', borderRadius: 8, fontSize: 14, fontWeight: 400,
+                color: '#3A3A3A', textDecoration: 'none', transition: 'all 0.15s',
               }}
-                onMouseEnter={e => { (e.target as HTMLElement).style.background = '#f0f4ff'; (e.target as HTMLElement).style.color = '#1a56db'; }}
-                onMouseLeave={e => { (e.target as HTMLElement).style.background = 'transparent'; (e.target as HTMLElement).style.color = '#475569'; }}
+                onMouseEnter={e => { (e.target as HTMLElement).style.background = '#EAE1DA'; (e.target as HTMLElement).style.color = '#923c22'; }}
+                onMouseLeave={e => { (e.target as HTMLElement).style.background = 'transparent'; (e.target as HTMLElement).style.color = '#3A3A3A'; }}
               >{l.label}</Link>
             ))}
           </div>
           <LanguageToggle />
+          <Link href="/situations" style={{ background: '#923c22', color: 'white', padding: '10px 24px', borderRadius: 24, fontSize: 14, fontWeight: 600, textDecoration: 'none', marginLeft: 16 }}>
+             Get Help
+          </Link>
           <button onClick={() => setOpen(v => !v)} style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer' }} className="mobile-menu-btn" aria-label="Menu">
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -54,14 +54,17 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div style={{ background: 'white', borderTop: '1px solid #e2e8f0', padding: 16 }}>
+        <div style={{ background: '#FCF5EF', borderTop: '1px solid #EAE1DA', padding: 16 }}>
           {links.map(l => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
               display: 'block', padding: '12px 8px', fontSize: 15, fontWeight: 500,
-              color: '#0f172a', textDecoration: 'none', borderBottom: '1px solid #f1f5f9',
+              color: '#3A3A3A', textDecoration: 'none', borderBottom: '1px solid #EAE1DA',
             }}>{l.label}</Link>
           ))}
           <div style={{ marginTop: 14 }}><LanguageToggle /></div>
+          <Link href="/situations" onClick={() => setOpen(false)} style={{ display: 'block', marginTop: 16, textAlign: 'center', background: '#923c22', color: 'white', padding: '12px', borderRadius: 24, fontSize: 15, fontWeight: 600, textDecoration: 'none' }}>
+            Get Help
+          </Link>
         </div>
       )}
 

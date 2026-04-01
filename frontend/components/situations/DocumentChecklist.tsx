@@ -5,22 +5,35 @@ import { CheckSquare, Square, Download, AlertCircle } from 'lucide-react';
 import { generateChecklistPDF } from '../../lib/pdfGenerator';
 import type { Situation } from '../../types';
 
-export default function DocumentChecklist({ situation }: { situation: Situation }) {
+export default function DocumentChecklist({ situation, onCompleteChange }: { situation: Situation; onCompleteChange?: (done: boolean) => void }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as 'en' | 'hi';
   const hFont = lang === 'hi' ? 'Noto Sans Devanagari, sans-serif' : 'Inter, sans-serif';
   const key = `checklist_${situation.id}`;
   const [checked, setChecked] = useState<Record<string, boolean>>({});
 
+  const checkCompletion = (items: Record<string, boolean>) => {
+    const required = situation.checklist.filter(i => i.required);
+    if (required.length === 0) return true;
+    return required.every(i => items[i.id]);
+  };
+
   useEffect(() => {
     const saved = localStorage.getItem(key);
-    if (saved) setChecked(JSON.parse(saved));
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      setChecked(parsed);
+      onCompleteChange?.(checkCompletion(parsed));
+    } else {
+      onCompleteChange?.(checkCompletion({}));
+    }
   }, [key]);
 
   const toggle = (id: string) => {
     const next = { ...checked, [id]: !checked[id] };
     setChecked(next);
     localStorage.setItem(key, JSON.stringify(next));
+    onCompleteChange?.(checkCompletion(next));
   };
 
   const done = situation.checklist.filter(i => checked[i.id]).length;

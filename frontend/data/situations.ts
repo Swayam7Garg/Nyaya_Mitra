@@ -16,44 +16,34 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right against Illegal Eviction",
-          "hi": "अवैध बेदखली के खिलाफ अधिकार"
+          "en": "Tenant Rights",
+          "hi": "किरायेदार के अधिकार"
         },
         "description": {
-          "en": "A landlord cannot evict you without proper legal notice and court order. You have the right to remain until due legal process is followed.",
-          "hi": "मकान मालिक बिना उचित कानूनी नोटिस और अदालत के आदेश के आपको बेदखल नहीं कर सकता।"
+          "en": "Protection from illegal eviction. Right to electricity and water. Privacy. Security deposit refund.",
+          "hi": "अवैध बेदखली से सुरक्षा। बिजली और पानी का अधिकार। निजता। सुरक्षा जमा वापसी।"
         }
       },
       {
         "title": {
-          "en": "Right to Security Deposit Refund",
-          "hi": "सुरक्षा जमा वापसी का अधिकार"
+          "en": "Legal Remedies",
+          "hi": "कानूनी उपाय"
         },
         "description": {
-          "en": "Your security deposit must be returned within 30 days of vacating the property.",
-          "hi": "आपकी सुरक्षा जमा राशि 30 दिनों के भीतर वापस की जानी चाहिए।"
-        }
-      },
-      {
-        "title": {
-          "en": "Right to Habitable Conditions",
-          "hi": "रहने योग्य स्थिति का अधिकार"
-        },
-        "description": {
-          "en": "Landlord must maintain basic amenities — water, electricity, and structural safety.",
-          "hi": "मकान मालिक बुनियादी सुविधाएं बनाए रखने के लिए बाध्य है।"
+          "en": "Rent Control Court, Civil Court, Police complaint in case of threats, Legal notice.",
+          "hi": "किराया नियंत्रण न्यायालय, व्यवहार न्यायालय, धमकी के मामले में पुलिस शिकायत, कानूनी नोटिस।"
         }
       }
     ],
     "laws": [
       {
-        "section": "Section 106",
-        "act": "Transfer of Property Act, 1882",
+        "section": "Constitutional Rights",
+        "act": "Constitution of India",
         "summary": {
-          "en": "Landlord must give 15-day notice before terminating monthly tenancy.",
-          "hi": "किरायेदारी समाप्त करने से पहले 15 दिन का नोटिस देना होगा।"
+          "en": "Rights to life, shelter, equality, and property.",
+          "hi": "जीवन, आश्रय, समानता और संपत्ति का अधिकार।"
         },
-        "fullText": "In the absence of a contract or local usage to the contrary, a lease of immovable property shall be deemed to be a lease from year to year, terminable by six months notice..."
+        "fullText": "Article 21: Protection of life and personal liberty - No person shall be deprived of his life or personal liberty except according to procedure established by law. (This includes the right to livelihood, shelter, and dignity).\n\nArticle 14: Equality before law - The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.\n\nArticle 19(1)(e): to reside and settle in any part of the territory of India.\n\nArticle 300A: Persons not to be deprived of property save by authority of law - No person shall be deprived of his property save by authority of law."
       }
     ],
     "checklist": [
@@ -162,22 +152,12 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right to be Protected",
-          "hi": "संरक्षण का अधिकार"
+          "en": "Right to Safety",
+          "hi": "सुरक्षा का अधिकार"
         },
         "description": {
-          "en": "You have the right to be protected against marketing of hazardous goods and services.",
-          "hi": "आपको खतरनाक वस्तुओं और सेवाओं से सुरक्षित रहने का अधिकार है।"
-        }
-      },
-      {
-        "title": {
-          "en": "Right to Seek Redressal",
-          "hi": "निवारण का अधिकार"
-        },
-        "description": {
-          "en": "You can seek redressal against unfair trade practices or exploitation before the Consumer Forum.",
-          "hi": "आप उपभोक्ता मंच में अनुचित व्यापार प्रथाओं के खिलाफ निवारण मांग सकते हैं।"
+          "en": "Protection against goods or services that are hazardous to life, health, or property.",
+          "hi": "जीवन, स्वास्थ्य या संपत्ति के लिए खतरनाक वस्तुओं या सेवाओं के खिलाफ सुरक्षा।"
         }
       },
       {
@@ -186,62 +166,134 @@ const situations: Situation[] = [
           "hi": "सूचित होने का अधिकार"
         },
         "description": {
-          "en": "You have the right to be informed about quality, quantity, and price of goods or services.",
-          "hi": "आपको वस्तुओं की गुणवत्ता, मात्रा और कीमत के बारे में सूचित होने का अधिकार है।"
+          "en": "Complete, truthful information about quality, quantity, price, standard, warranty, expiry, risks, terms & conditions.",
+          "hi": "गुणवत्ता, मात्रा, कीमत, मानक, वारंटी आदि के बारे में पूर्ण जानकारी।"
+        }
+      },
+      {
+        "title": {
+          "en": "Right to Choose",
+          "hi": "चुनने का अधिकार"
+        },
+        "description": {
+          "en": "Free choice of products/services at fair prices without coercion.",
+          "hi": "बिना किसी दबाव के उचित मूल्य पर उत्पादों/सेवाओं का स्वतंत्र विकल्प।"
+        }
+      },
+      {
+        "title": {
+          "en": "Right to be Heard",
+          "hi": "सुने जाने का अधिकार"
+        },
+        "description": {
+          "en": "Consumers’ interests must be considered at appropriate forums and disputes may be heard by Consumer Disputes Redressal Commissions.",
+          "hi": "उपभोक्ताओं के हितों पर विचार किया जाना चाहिए।"
+        }
+      },
+      {
+        "title": {
+          "en": "Right to Seek Redressal",
+          "hi": "निवारण मांगने का अधिकार"
+        },
+        "description": {
+          "en": "Consumers can seek compensation, refund, replacement, repair or corrective action for defective goods, service deficiency.",
+          "hi": "उपभोक्ता मुआवजे, धनवापसी, प्रतिस्थापन, मरम्मत या सुधारात्मक कार्रवाई की मांग कर सकते हैं।"
+        }
+      },
+      {
+        "title": {
+          "en": "Right to Consumer Awareness",
+          "hi": "उपभोक्ता जागरूकता का अधिकार"
+        },
+        "description": {
+          "en": "Authorities must promote awareness of consumer rights and legal remedies.",
+          "hi": "अधिकारियों को उपभोक्ता अधिकारों और कानूनी उपचारों के बारे में जागरूकता को बढ़ावा देना चाहिए।"
         }
       }
     ],
     "laws": [
       {
-        "section": "Section 35",
+        "section": "Rules & Scope",
         "act": "Consumer Protection Act, 2019",
         "summary": {
-          "en": "Allows filing complaint before District Consumer Forum for claims up to Rs. 1 crore.",
-          "hi": "1 करोड़ रुपये तक के दावों के लिए जिला उपभोक्ता मंच में शिकायत दर्ज कर सकते हैं।"
+          "en": "Procedure: A complaint may be filed with the Consumer Disputes Redressal Commission within jurisdiction, electronically or in person, accompanied by requisite fee.",
+          "hi": "प्रक्रिया: एक शिकायत उपभोक्ता विवाद निवारण आयोग में दायर की जा सकती है।"
         },
-        "fullText": "A complaint in relation to any goods sold or delivered or agreed to be sold or any service provided may be filed with a District Commission by the complainant..."
+        "fullText": "Section 2(9) of Consumer Protection Act 2019 defines 'consumer rights' to include:\n(i) the right to be protected against the marketing of goods, products or services which are hazardous to life and property;\n(ii) the right to be informed about the quality, quantity, potency, purity, standard and price of goods, products or services, as the case may be, so as to protect the consumer against unfair trade practices;\n(iii) the right to be assured, wherever possible, access to a variety of goods, products or services at competitive prices;\n(iv) the right to be heard and to be assured that consumers' interests will receive due consideration at appropriate fora;\n(v) the right to seek redressal against unfair trade practice or restrictive trade practices or unscrupulous exploitation of consumers; and\n(vi) the right to consumer awareness."
       }
     ],
     "checklist": [
       {
         "id": "cc1",
         "item": {
-          "en": "Bill / invoice / receipt of purchase",
-          "hi": "खरीद का बिल / चालान / रसीद"
+          "en": "Copy of the Bill / Invoice / Cash Memo",
+          "hi": "बिल / चालान / नकद मेमो की प्रति"
         },
         "required": true
       },
       {
         "id": "cc2",
         "item": {
-          "en": "Product / service details and defect description",
-          "hi": "उत्पाद विवरण और दोष विवरण"
+          "en": "Product / Service details & deficiency description",
+          "hi": "उत्पाद विवरण और सेवा में कमी का विवरण"
         },
         "required": true
       },
       {
         "id": "cc3",
         "item": {
-          "en": "Written complaint to the company",
-          "hi": "कंपनी को लिखित शिकायत"
+          "en": "Copy of representation/complaint sent to the company",
+          "hi": "कंपनी को भेजी गई शिकायत की प्रति"
         },
         "required": true
       },
       {
         "id": "cc4",
         "item": {
-          "en": "Company response or refusal letter",
-          "hi": "कंपनी की प्रतिक्रिया"
+          "en": "Proof of delivery of the complaint (Email/Postal receipt)",
+          "hi": "शिकायत की डिलीवरी का प्रमाण (ईमेल/डाक रसीद)"
         },
-        "required": false
+        "required": true
       },
       {
         "id": "cc5",
         "item": {
-          "en": "Photos of defective product",
-          "hi": "दोषपूर्ण उत्पाद की तस्वीरें"
+          "en": "Legal Notice sent (if any) and its proof of service",
+          "hi": "भेजा गया कानूनी नोटिस और उसकी सेवा का प्रमाण"
         },
         "required": false
+      },
+      {
+        "id": "cc6",
+        "item": {
+          "en": "Company's response or refusal letter (if any)",
+          "hi": "कंपनी की प्रतिक्रिया या अस्वीकृति पत्र"
+        },
+        "required": false
+      },
+      {
+        "id": "cc7",
+        "item": {
+          "en": "Photographs or videos of the defective goods",
+          "hi": "दोषपूर्ण सामान की तस्वीरें या वीडियो"
+        },
+        "required": false
+      },
+      {
+        "id": "cc8",
+        "item": {
+          "en": "Aadhar Card / ID Proof of the complainant",
+          "hi": "शिकायतकर्ता का आधार कार्ड / पहचान प्रमाण"
+        },
+        "required": true
+      },
+      {
+        "id": "cc9",
+        "item": {
+          "en": "Draft of the Notarized Affidavit verifying facts",
+          "hi": "तथ्यों को सत्यापित करने वाला नोटरीकृत शपथ पत्र का प्रारूप"
+        },
+        "required": true
       }
     ],
     "steps": [
@@ -308,34 +360,44 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right to Safe Workplace",
-          "hi": "सुरक्षित कार्यस्थल का अधिकार"
+          "en": "Complaint Timeline & Procedure",
+          "hi": "शिकायत समय-सीमा और प्रक्रिया"
         },
         "description": {
-          "en": "Every employee has the right to work in an environment free from harassment under POSH Act 2013.",
-          "hi": "हर कर्मचारी को POSH अधिनियम 2013 के तहत उत्पीड़न मुक्त वातावरण में काम करने का अधिकार है।"
+          "en": "A complaint can be filed to the ICC within 90 days of the last incident.",
+          "hi": "अंतिम घटना के 90 दिनों के भीतर शिकायत दर्ज की जा सकती है।"
         }
       },
       {
         "title": {
-          "en": "Right to File ICC Complaint",
-          "hi": "ICC शिकायत दर्ज करने का अधिकार"
+          "en": "ICC Inquiry",
+          "hi": "ICC जांच"
         },
         "description": {
-          "en": "You can file a complaint with the Internal Complaints Committee (ICC) within 3 months of the incident.",
-          "hi": "आप घटना के 3 महीने के भीतर आंतरिक शिकायत समिति में शिकायत दर्ज कर सकते हैं।"
+          "en": "The ICC must conduct a confidential inquiry and complete it within 90 days, with interim relief where warranted.",
+          "hi": "ICC को गोपनीय जांच करनी चाहिए और 90 दिनों के भीतर पूरी करनी चाहिए।"
+        }
+      },
+      {
+        "title": {
+          "en": "Criminal Charges",
+          "hi": "आपराधिक आरोप"
+        },
+        "description": {
+          "en": "Victims may also pursue criminal charges (e.g., under IPC sections like 354A) and file an FIR in addition to ICC complaint.",
+          "hi": "पीड़ित ICC शिकायत के अतिरिक्त FIR भी दर्ज करा सकते हैं।"
         }
       }
     ],
     "laws": [
       {
-        "section": "Section 4",
-        "act": "POSH Act, 2013",
+        "section": "Mandatory Requirement",
+        "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 (POSH Act)",
         "summary": {
-          "en": "Every employer with 10+ employees must constitute an Internal Complaints Committee (ICC).",
-          "hi": "10+ कर्मचारियों वाले नियोक्ता को आंतरिक शिकायत समिति बनानी होगी।"
+          "en": "Every employer with 10 or more employees must constitute an Internal Complaints Committee (ICC).",
+          "hi": "10 या अधिक कर्मचारियों वाले प्रत्येक नियोक्ता को आंतरिक शिकायत समिति (ICC) का गठन करना होगा।"
         },
-        "fullText": "Every employer of a workplace shall, by an order in writing, constitute a Committee to be known as the Internal Complaints Committee..."
+        "fullText": "Section 3 of POSH Act 2013: Prevention of sexual harassment.— (1) No woman shall be subjected to sexual harassment at any workplace. (2) The following circumstances, among other circumstances, if it occurs, or is present in relation to or connected with any act or behaviour of sexual harassment may amount to sexual harassment:— (i) implied or explicit promise of preferential treatment in her employment; or (ii) implied or explicit threat of detrimental treatment in her employment; or (iii) implied or explicit threat about her present or future employment status; or (iv) interference with her work or creating an intimidating or offensive or hostile work environment for her; or (v) humiliating treatment likely to affect her health or safety."
       }
     ],
     "checklist": [
@@ -436,44 +498,34 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right to File FIR Free of Cost",
-          "hi": "निःशुल्क FIR दर्ज करने का अधिकार"
+          "en": "Right to File FIR",
+          "hi": "FIR दर्ज करने का अधिकार"
         },
         "description": {
-          "en": "Police are legally bound to register your FIR free of cost for any cognizable offence. Refusal is punishable.",
-          "hi": "पुलिस निःशुल्क FIR दर्ज करने के लिए कानूनी रूप से बाध्य है।"
+          "en": "Every citizen has the right to file a First Information Report (FIR) with the police for any cognizable offence.",
+          "hi": "प्रत्येक नागरिक को संज्ञेय अपराध के लिए FIR दर्ज करने का अधिकार है।"
         }
       },
       {
         "title": {
-          "en": "Right to a Copy of FIR",
-          "hi": "FIR की प्रति का अधिकार"
+          "en": "Obligations of Police",
+          "hi": "पुलिस के दायित्व"
         },
         "description": {
-          "en": "You are entitled to receive a free copy of the FIR immediately after registration.",
-          "hi": "FIR दर्ज होने के तुरंत बाद मुफ्त प्रति पाने का अधिकार है।"
-        }
-      },
-      {
-        "title": {
-          "en": "Right to Zero FIR",
-          "hi": "जीरो FIR का अधिकार"
-        },
-        "description": {
-          "en": "You can file a Zero FIR at any police station regardless of jurisdiction.",
-          "hi": "किसी भी पुलिस स्टेशन पर जीरो FIR दर्ज कर सकते हैं।"
+          "en": "Police must record FIR for information regarding a cognizable offence.",
+          "hi": "पुलिस को संज्ञेय अपराध के संबंध में FIR दर्ज करनी चाहिए।"
         }
       }
     ],
     "laws": [
       {
         "section": "Section 154",
-        "act": "Code of Criminal Procedure, 1973",
+        "act": "Code of Criminal Procedure (CrPC)",
         "summary": {
-          "en": "Police must register FIR for every cognizable offence without any conditions.",
-          "hi": "पुलिस को हर संज्ञेय अपराध के लिए FIR दर्ज करनी होगी।"
+          "en": "Every citizen has the right to file a First Information Report (FIR) with the police for any cognizable offence (e.g., theft, assault, fraud, kidnapping, violence).",
+          "hi": "प्रत्येक नागरिक को किसी भी संज्ञेय अपराध के लिए पुलिस में प्रथम सूचना रिपोर्ट (FIR) दर्ज करने का अधिकार है।"
         },
-        "fullText": "Every information relating to the commission of a cognisable offence, if given orally to an officer in charge of a police station, shall be reduced to writing by him or under his direction..."
+        "fullText": "Section 154 of the Code of Criminal Procedure, 1973 (now Section 173 of Bharatiya Nagarik Suraksha Sanhita, 2023): Information in cognizable cases.—\n(1) Every information relating to the commission of a cognizable offence, if given orally to an officer in charge of a police station, shall be reduced to writing by him or under his direction, and be read over to the informant; and every such information, whether given in writing or reduced to writing as aforesaid, shall be signed by the person giving it, and the substance thereof shall be entered in a book to be kept by such officer in such form as the State Government may prescribe in this behalf.\n(2) A copy of the information as recorded under sub-section (1) shall be given forthwith, free of cost, to the informant."
       }
     ],
     "checklist": [
@@ -582,34 +634,44 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right to Access Information",
-          "hi": "सूचना तक पहुंच का अधिकार"
+          "en": "Procedure",
+          "hi": "प्रक्रिया"
         },
         "description": {
-          "en": "Every citizen has the right to seek information from any public authority under RTI Act 2005.",
-          "hi": "हर नागरिक RTI अधिनियम 2005 के तहत जानकारी मांग सकता है।"
+          "en": "File RTI to the PIO with details of information sought.",
+          "hi": "PIO के पास RTI दाखिल करें।"
         }
       },
       {
         "title": {
-          "en": "Right to Response in 30 Days",
-          "hi": "30 दिनों में जवाब का अधिकार"
+          "en": "Response Time",
+          "hi": "प्रतिक्रिया समय"
         },
         "description": {
-          "en": "Government must respond to your RTI within 30 days (48 hours for matters of life and liberty).",
-          "hi": "सरकार को 30 दिनों के भीतर जवाब देना होगा।"
+          "en": "Public authority must respond within 30 days (or 48 hours if life/death involved).",
+          "hi": "सार्वजनिक प्राधिकरण को 30 दिनों के भीतर जवाब देना चाहिए।"
+        }
+      },
+      {
+        "title": {
+          "en": "Appeals",
+          "hi": "अपील"
+        },
+        "description": {
+          "en": "If denied, file First Appeal then Second Appeal to Central/State Information Commission.",
+          "hi": "इनकार किए जाने पर, केंद्रीय/राज्य सूचना आयोग में अपील दाखिल करें।"
         }
       }
     ],
     "laws": [
       {
-        "section": "Section 6",
-        "act": "Right to Information Act, 2005",
+        "section": "Section 3 & 6",
+        "act": "Right to Information Act, 2005 (RTI Act)",
         "summary": {
-          "en": "Procedure for requesting information — written application to PIO with Rs. 10 fee.",
-          "hi": "PIO को 10 रुपये शुल्क के साथ लिखित आवेदन।"
+          "en": "Every citizen has the right to access information held by public authorities to promote transparency and accountability.",
+          "hi": "प्रत्येक नागरिक को सार्वजनिक प्राधिकरणों द्वारा रखी गई जानकारी तक पहुंचने का अधिकार है।"
         },
-        "fullText": "A person who desires to obtain any information under this Act shall make a request in writing or through electronic means in English or Hindi or in the official language of the area..."
+        "fullText": "Section 3 of RTI Act, 2005: Right to information.—Subject to the provisions of this Act, all citizens shall have the right to information.\n\nSection 6: Request for obtaining information.—(1) A person, who desires to obtain any information under this Act, shall make a request in writing or through electronic means in English or Hindi or in the official language of the area in which the application is being made, accompanying such fee as may be prescribed, to— (a) the Central Public Information Officer or State Public Information Officer, as the case may be, of the concerned public authority; (b) the Central Assistant Public Information Officer or State Assistant Public Information Officer, as the case may be, specifying the particulars of the information sought by him or her."
       }
     ],
     "checklist": [
@@ -718,34 +780,34 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right to Emergency Protection Order",
-          "hi": "आपातकालीन सुरक्षा आदेश का अधिकार"
+          "en": "Protection against Abuse",
+          "hi": "दुर्व्यवहार के खिलाफ सुरक्षा"
         },
         "description": {
-          "en": "A Magistrate can issue an emergency protection order within 24 hours of your complaint.",
-          "hi": "मजिस्ट्रेट 24 घंटे के भीतर आपातकालीन सुरक्षा आदेश जारी कर सकता है।"
+          "en": "Women have the right to protection from physical, emotional, verbal, sexual, and economic abuse.",
+          "hi": "महिलाओं को शारीरिक, भावनात्मक, मौखिक, यौन और आर्थिक शोषण से सुरक्षा का अधिकार है।"
         }
       },
       {
         "title": {
-          "en": "Right to Residence",
-          "hi": "निवास का अधिकार"
+          "en": "Procedure",
+          "hi": "प्रक्रिया"
         },
         "description": {
-          "en": "You cannot be forced to leave your shared household regardless of ownership.",
-          "hi": "स्वामित्व चाहे किसी का भी हो, आपको घर छोड़ने के लिए मजबूर नहीं किया जा सकता।"
+          "en": "Complaint may be filed to Protection Officer / Judicial Magistrate. Magistrate may grant interim protection, residency rights, monetary compensation and counseling. Police assistance can be sought to enforce orders.",
+          "hi": "संरक्षण अधिकारी / न्यायिक मजिस्ट्रेट को शिकायत दर्ज की जा सकती है।"
         }
       }
     ],
     "laws": [
       {
-        "section": "Section 12",
-        "act": "Protection of Women from Domestic Violence Act, 2005",
+        "section": "Section 3 & 12",
+        "act": "Protection of Women from Domestic Violence Act, 2005 (PWDVA)",
         "summary": {
-          "en": "Women can file application before Magistrate for protection orders, residence orders, and maintenance.",
-          "hi": "महिलाएं सुरक्षा आदेश के लिए मजिस्ट्रेट के सामने आवेदन कर सकती हैं।"
+          "en": "Women have the right to protection from physical, emotional, verbal, sexual, and economic abuse by family or intimate partners.",
+          "hi": "महिलाओं को परिवार या अंतरंग भागीदारों द्वारा शारीरिक, भावनात्मक, मौखिक, यौन और आर्थिक शोषण से सुरक्षा का अधिकार है।"
         },
-        "fullText": "An aggrieved person or a Protection Officer or any other person on behalf of the aggrieved person may present an application to the Magistrate seeking one or more reliefs under this Act..."
+        "fullText": "Section 3 of PWDVA, 2005: Definition of domestic violence.—For the purposes of this Act, any act, omission or commission or conduct of the respondent shall constitute domestic violence in case it— (a) harms or injures or endangers the health, safety, life, limb or well-being, whether mental or physical, of the aggrieved person or tends to do so and includes causing physical abuse, sexual abuse, verbal and emotional abuse and economic abuse; or (b) harasses, harms, injures or endangers the aggrieved person with a view to coerce her or any other person related to her to meet any unlawful demand for any dowry or other property or valuable security...\nSection 12 allows the aggrieved person to present an application to the Magistrate seeking one or more reliefs under this Act."
       }
     ],
     "checklist": [
@@ -854,34 +916,44 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right to Property Documentation",
-          "hi": "संपत्ति दस्तावेज़ का अधिकार"
+          "en": "Right to Property",
+          "hi": "संपत्ति का अधिकार"
         },
         "description": {
-          "en": "You have the right to obtain certified copies of land records and sale deeds from the revenue department.",
-          "hi": "राजस्व विभाग से भूमि अभिलेखों की प्रमाणित प्रतियां पाने का अधिकार है।"
+          "en": "A citizen has the right to own, use, transfer and enjoy property as per contract and law.",
+          "hi": "नागरिक को संपत्ति का अधिकार है।"
         }
       },
       {
         "title": {
-          "en": "Right to Peaceful Possession",
-          "hi": "शांतिपूर्ण कब्जे का अधिकार"
+          "en": "Registered Documents",
+          "hi": "पंजीकृत दस्तावेज"
         },
         "description": {
-          "en": "A rightful owner cannot be dispossessed without due process of law.",
-          "hi": "कानूनी प्रक्रिया के बिना स्वामी को बेदखल नहीं किया जा सकता।"
+          "en": "Registered documents are prima facie evidence of the transaction.",
+          "hi": "पंजीकृत दस्तावेज लेनदेन के मुख्य साक्ष्य हैं।"
+        }
+      },
+      {
+        "title": {
+          "en": "Civil Court Jurisdiction",
+          "hi": "दीवानी न्यायालय क्षेत्राधिकार"
+        },
+        "description": {
+          "en": "Civil Courts have jurisdiction to adjudicate property suits; limitation periods apply for filing claims.",
+          "hi": "दीवानी न्यायालयों को संपत्ति विवादों का फैसला करने का अधिकार है।"
         }
       }
     ],
     "laws": [
       {
-        "section": "Section 145",
-        "act": "Code of Criminal Procedure, 1973",
+        "section": "Transfer & Registration",
+        "act": "Transfer of Property Act, 1882; Indian Succession Act; Registration Act, 1908; Limitation Act",
         "summary": {
-          "en": "Police can intervene in land disputes likely to cause breach of peace.",
-          "hi": "पुलिस शांति भंग की संभावना वाले संपत्ति विवादों में हस्तक्षेप कर सकती है।"
+          "en": "A citizen has the right to own, use, transfer and enjoy property as per contract and law.",
+          "hi": "एक नागरिक को संपत्ति के स्वामित्व, उपयोग, और हस्तांतरण का अधिकार है।"
         },
-        "fullText": "Whenever an Executive Magistrate is satisfied from a report of a police officer or upon other information that a dispute likely to cause a breach of the peace exists concerning any land or water..."
+        "fullText": "Section 5 of Transfer of Property Act, 1882: 'Transfer of property' defined.—In the following sections 'transfer of property' means an act by which a living person conveys property, in present or in future, to one or more other living persons, or to himself, or to himself and one or more other living persons; and 'to transfer property' is to perform such act.\n\nSection 17 of the Registration Act, 1908: Documents of which registration is compulsory.—(1) The following documents shall be registered: (a) instruments of gift of immovable property; (b) other non-testamentary instruments which purport or operate to create, declare, assign, limit or extinguish, whether in present or in future, any right, title or interest, whether vested or contingent, of the value of one hundred rupees and upwards, to or in immovable property."
       }
     ],
     "checklist": [
@@ -990,72 +1062,24 @@ const situations: Situation[] = [
     "rights": [
       {
         "title": {
-          "en": "Right to Minimum Wage",
-          "hi": "न्यूनतम वेतन का अधिकार"
+          "en": "Dispute Resolution",
+          "hi": "विवाद समाधान"
         },
         "description": {
-          "en": "Every worker is entitled to the minimum wage set by the state government. No employer can pay less than this, even with worker's agreement.",
-          "hi": "प्रत्येक श्रमिक को राज्य सरकार द्वारा निर्धारित न्यूनतम वेतन पाने का अधिकार है।"
-        }
-      },
-      {
-        "title": {
-          "en": "Right to Timely Payment",
-          "hi": "समय पर भुगतान का अधिकार"
-        },
-        "description": {
-          "en": "Wages must be paid on time — by the 7th of the following month. Delay is a punishable offence.",
-          "hi": "वेतन अगले महीने की 7 तारीख तक दिया जाना चाहिए। देरी दंडनीय अपराध है।"
-        }
-      },
-      {
-        "title": {
-          "en": "Right to Provident Fund (PF)",
-          "hi": "भविष्य निधि (PF) का अधिकार"
-        },
-        "description": {
-          "en": "Employees in establishments with 20+ workers are entitled to PF deduction and employer contribution under EPF Act.",
-          "hi": "20+ कर्मचारी वाले प्रतिष्ठानों में कर्मचारी PF के हकदार हैं।"
-        }
-      },
-      {
-        "title": {
-          "en": "Right Against Illegal Deductions",
-          "hi": "अवैध कटौती के खिलाफ अधिकार"
-        },
-        "description": {
-          "en": "No employer can make deductions from wages except those specifically authorized by law (PF, ESI, TDS).",
-          "hi": "नियोक्ता केवल कानूनी कटौतियां ही कर सकता है।"
+          "en": "Labour issues can be taken before Labour Courts, Industrial Tribunals, District Forums or appropriate statutory bodies.",
+          "hi": "श्रम मुद्दों को श्रम न्यायालयों, औद्योगिक न्यायाधिकरणों आदि के समक्ष ले जाया जा सकता है।"
         }
       }
     ],
     "laws": [
       {
-        "section": "Section 3",
-        "act": "Minimum Wages Act, 1948",
+        "section": "Key Rights & Laws",
+        "act": "Industrial Disputes Act, Minimum Wages Act, Payment of Wages Act, Employees' Provident Funds Act, Workmen's Compensation Act, Shops & Establishments Acts",
         "summary": {
-          "en": "Employers must pay not less than the minimum rates fixed by appropriate government for scheduled employments.",
-          "hi": "नियोक्ता को अनुसूचित रोजगार के लिए निर्धारित न्यूनतम दरों से कम वेतन नहीं देना चाहिए।"
+          "en": "Right to fair wages, timely payment, social security, compensation, and against unfair labour practices.",
+          "hi": "उचित वेतन, समय पर भुगतान, सामाजिक सुरक्षा, और अनुचित श्रम प्रथाओं के खिलाफ अधिकार।"
         },
-        "fullText": "The appropriate Government shall fix the minimum rates of wages payable to employees employed in a scheduled employment... No employer shall pay to any employee wages at a rate less than the minimum rate of wages fixed by the Government."
-      },
-      {
-        "section": "Section 5",
-        "act": "Payment of Wages Act, 1936",
-        "summary": {
-          "en": "All wages must be paid before the 7th of every month. Employers cannot delay or deny wages arbitrarily.",
-          "hi": "सभी वेतन हर महीने की 7 तारीख से पहले देना अनिवार्य है।"
-        },
-        "fullText": "The wages of every person employed in a factory or establishment shall be paid before the expiry of the seventh day of the following wage period... Every employer shall be responsible for the payment of all wages required to be paid under this Act."
-      },
-      {
-        "section": "Section 6",
-        "act": "Employees' Provident Fund Act, 1952",
-        "summary": {
-          "en": "Both employee and employer must contribute 12% of basic salary to the PF fund each month.",
-          "hi": "कर्मचारी और नियोक्ता दोनों को मूल वेतन का 12% PF में जमा करना होगा।"
-        },
-        "fullText": "Subject to the provisions of this Act, the Central Government may, by notification in the Official Gazette, frame a Scheme to be called the Employees' Provident Fund Scheme for the establishment of provident funds under this Act..."
+        "fullText": "Section 12 of Minimum Wages Act, 1948: Payment of minimum rates of wages.—(1) Where in respect of any scheduled employment a notification under section 5 is in force, the employer shall pay to every employee engaged in a scheduled employment under him wages at a rate not less than the minimum rate of wages fixed by such notification for that class of employees in that employment without any deductions except as may be authorized within such time and subject to such conditions as may be prescribed.\n\nSection 5 of Payment of Wages Act, 1936: Time of payment of wages.—(1) The wages of every person employed upon or in—(a) any railway, factory or industrial or other establishment upon or in which less than one thousand persons are employed, shall be paid before the expiry of the seventh day."
       }
     ],
     "checklist": [

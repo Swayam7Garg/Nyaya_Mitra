@@ -11,22 +11,22 @@ export default function LanguageToggle() {
   };
 
   return (
-    <div style={{ display: 'flex', background: '#f1f5f9', borderRadius: 24, padding: '3px', gap: '2px', border: '1px solid #e2e8f0' }}>
+    <div style={{ display: 'flex', background: '#EAE1DA', borderRadius: 24, padding: '3px', gap: '2px', border: '1px solid #D9CBBF' }}>
       <button
         onClick={() => toggle('en')}
         style={{
-          padding: '5px 14px', borderRadius: 20, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600,
-          background: lang === 'en' ? '#1a56db' : 'transparent',
-          color: lang === 'en' ? 'white' : '#475569',
+          padding: '6px 14px', borderRadius: 20, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 500,
+          background: lang === 'en' ? '#923c22' : 'transparent',
+          color: lang === 'en' ? 'white' : '#6A564A',
           transition: 'all 0.2s',
         }}
-      >EN</button>
+      >English</button>
       <button
         onClick={() => toggle('hi')}
         style={{
-          padding: '5px 14px', borderRadius: 20, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600,
-          background: lang === 'hi' ? '#1a56db' : 'transparent',
-          color: lang === 'hi' ? 'white' : '#475569',
+          padding: '6px 14px', borderRadius: 20, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 500,
+          background: lang === 'hi' ? '#923c22' : 'transparent',
+          color: lang === 'hi' ? 'white' : '#6A564A',
           transition: 'all 0.2s',
           fontFamily: 'Noto Sans Devanagari, sans-serif',
         }}

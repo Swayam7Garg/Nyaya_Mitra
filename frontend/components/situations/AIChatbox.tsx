@@ -33,16 +33,16 @@ export default function AIChatbox({ situation }: { situation: Situation }) {
   };
 
   return (
-    <div style={{ display: 'grid', gap: 24, gridTemplateColumns: response ? '1fr 1fr' : '1fr', background: 'white', padding: 32, borderRadius: 12, borderTop: '1px solid #e2e8f0', margin: '0 -20px' }}>
+    <div style={{ display: 'grid', gap: 24, gridTemplateColumns: response ? '1fr 1fr' : '1fr', background: 'white', padding: 32, borderRadius: 12, borderTop: '1px solid #e2e8f0' }}>
 
       {/* Input Section */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Bot size={24} color="#1a56db" />
+          <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#FCF5EF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Bot size={24} color="#923c22" />
           </div>
           <div>
-            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#0f172a', fontFamily: hFont }}>
+            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#1A1A1A', fontFamily: hFont }}>
               {isHi ? 'न्यायसाथी एआई को अपनी स्थिति समझाएं' : 'Explain your situation to NyayaSaathi AI'}
             </h2>
             <p style={{ fontSize: 13, color: '#64748b', fontFamily: hFont }}>
@@ -60,7 +60,7 @@ export default function AIChatbox({ situation }: { situation: Situation }) {
             border: '1.5px solid #e2e8f0', fontSize: 15, fontFamily: hFont,
             outline: 'none', resize: 'vertical', lineHeight: 1.6
           }}
-          onFocus={e => e.target.style.borderColor = '#1a56db'}
+          onFocus={e => e.target.style.borderColor = '#923c22'}
           onBlur={e => e.target.style.borderColor = '#e2e8f0'}
         />
 
@@ -85,13 +85,13 @@ export default function AIChatbox({ situation }: { situation: Situation }) {
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              <h3 style={{ fontSize: 18, fontWeight: 800, color: '#0f172a', fontFamily: hFont, display: 'flex', alignItems: 'center', gap: 8 }}>
-                <Scale size={20} color="#1a56db" /> {isHi ? 'एआई कानूनी विश्लेषण' : 'AI Legal Analysis'}
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: '#1A1A1A', fontFamily: hFont, display: 'flex', alignItems: 'center', gap: 8 }}>
+                <Scale size={20} color="#923c22" /> {isHi ? 'एआई कानूनी विश्लेषण' : 'AI Legal Analysis'}
               </h3>
 
-              <div style={{ background: 'white', padding: 16, borderRadius: 8, borderLeft: '4px solid #1a56db' }}>
+              <div style={{ background: 'white', padding: 16, borderRadius: 8, borderLeft: '4px solid #923c22' }}>
                 <p style={{ fontSize: 13, fontWeight: 700, color: '#64748b', marginBottom: 4, textTransform: 'uppercase' }}>Analysis</p>
-                <p style={{ fontSize: 15, color: '#0f172a', lineHeight: 1.6, fontFamily: hFont }}>{response.analysis}</p>
+                <p style={{ fontSize: 15, color: '#1A1A1A', lineHeight: 1.6, fontFamily: hFont }}>{response.analysis}</p>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>

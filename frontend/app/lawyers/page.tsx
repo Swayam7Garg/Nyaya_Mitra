@@ -1,9 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MapPin, Navigation } from 'lucide-react';
+import { MapPin, Navigation, Info } from 'lucide-react';
 import LawyerCard from '../../components/lawyers/LawyerCard';
 import LawyerFilters from '../../components/lawyers/LawyerFilters';
+import FreeLegalAidModal from '../../components/lawyers/FreeLegalAidModal';
 import lawyersData from '../../data/lawyers.json';
 import type { Lawyer } from '../../types';
 
@@ -11,6 +12,7 @@ export default function LawyersPage() {
   const { i18n } = useTranslation();
   const [lawyers, setLawyers] = useState<Lawyer[]>(lawyersData as Lawyer[]);
   const [filters, setFilters] = useState({ city: '', area: '', lang: '', query: '' });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetch((process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000') + '/api/lawyers')
@@ -75,6 +77,16 @@ export default function LawyersPage() {
 
         {/* List Section */}
         <div style={{ width: 450, background: 'white', display: 'flex', flexDirection: 'column', borderLeft: '1px solid #e2e8f0' }}>
+          
+          {/* Free Legal Aid Banner */}
+          <div style={{ padding: '16px 24px', background: 'linear-gradient(135deg, #eff6ff, #dbeafe)', borderBottom: '1px solid #cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+             <div>
+               <h3 style={{ fontSize: 15, fontWeight: 700, color: '#1e3a8a', margin: 0, display: 'flex', alignItems: 'center', gap: 6 }}><Info size={16} /> Eligible for Free Legal Aid?</h3>
+               <p style={{ fontSize: 12, color: '#3b82f6', margin: '4px 0 0 0' }}>Learn about NALSA free services under Sec 12.</p>
+             </div>
+             <button onClick={() => setIsModalOpen(true)} style={{ background: '#1d4ed8', color: 'white', border: 'none', padding: '8px 16px', borderRadius: 20, fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}>Know More</button>
+          </div>
+
           <div style={{ padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e2e8f0' }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: '#0f172a' }}>Nearest to {filters.city || 'New Delhi'}</span>
             <button style={{ background: 'none', border: 'none', fontSize: 13, color: '#1a56db', display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}>
@@ -87,6 +99,7 @@ export default function LawyersPage() {
           </div>
         </div>
       </div>
+      <FreeLegalAidModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

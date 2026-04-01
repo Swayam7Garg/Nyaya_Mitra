@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1a56db;
-  --color-primary-dark: #1141a8;
-  --color-accent: #ff6b35;
-  --color-success: #0e9f6e;
-  --color-warning: #f59e0b;
-  --color-surface: #f8fafc;
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-border: #e2e8f0;
+  --color-primary: #923C22;
+  --color-primary-dark: #732F1A;
+  --color-accent: #455B3C;
+  --color-success: #455B3C;
+  --color-warning: #D17C17;
+  --color-surface: #FCF5EF;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6A564A;
+  --color-border: #EAE1DA;
   --radius-card: 12px;
   --radius-btn: 8px;
   --radius-pill: 24px;
@@ -22,8 +22,8 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
   line-height: 1.6;
 }
 
@@ -34,19 +34,19 @@ body {
 .card {
   background: white;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
   transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(26,86,219,0.1);
-  border-color: #1a56db;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  border-color: var(--color-primary);
   transform: translateY(-2px);
 }
 
 .btn-primary {
-  background: #1a56db;
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -60,13 +60,13 @@ body {
   gap: 6px;
   text-decoration: none;
 }
-.btn-primary:hover { background: #1141a8; transform: translateY(-1px); }
+.btn-primary:hover { background: var(--color-primary-dark); transform: translateY(-1px); }
 .btn-primary:disabled { background: #94a3b8; cursor: not-allowed; transform: none; }
 
 .btn-secondary {
   background: white;
-  color: #1a56db;
-  border: 1.5px solid #1a56db;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
   border-radius: 8px;
   padding: 10px 20px;
   font-size: 14px;
@@ -78,10 +78,10 @@ body {
   gap: 6px;
   text-decoration: none;
 }
-.btn-secondary:hover { background: #eff6ff; }
+.btn-secondary:hover { background: var(--color-surface); }
 
 .btn-accent {
-  background: #ff6b35;
+  background: var(--color-accent);
   color: white;
   border: none;
   border-radius: 8px;
@@ -91,7 +91,7 @@ body {
   cursor: pointer;
   transition: background 0.2s;
 }
-.btn-accent:hover { background: #e85a25; }
+.btn-accent:hover { background: #32442B; }
 
 .pill {
   border-radius: 24px;
@@ -103,9 +103,9 @@ body {
   gap: 4px;
 }
 
-.pill-blue { background: #dbeafe; color: #1a56db; }
-.pill-green { background: #d1fae5; color: #0e9f6e; }
-.pill-orange { background: #ffedd5; color: #ea580c; }
+.pill-blue { background: #EAE1DA; color: var(--color-primary); }
+.pill-green { background: #E0ECD6; color: #455B3C; }
+.pill-orange { background: #FDE8DB; color: #923C22; }
 .pill-amber { background: #fef3c7; color: #92400e; }
 .pill-pink { background: #fce7f3; color: #9d174d; }
 .pill-purple { background: #ede9fe; color: #6d28d9; }
@@ -116,18 +116,18 @@ body {
   background: none;
   font-size: 14px;
   font-weight: 500;
-  color: #475569;
+  color: var(--color-text-secondary);
   cursor: pointer;
   border-bottom: 3px solid transparent;
   transition: all 0.2s;
   white-space: nowrap;
 }
 .tab-btn.active {
-  color: #1a56db;
-  border-bottom-color: #1a56db;
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
   font-weight: 700;
 }
-.tab-btn:hover:not(.active) { color: #1a56db; background: #f0f4ff; }
+.tab-btn:hover:not(.active) { color: var(--color-primary); background: #FAF4EE; }
 
 .law-card {
   background: #fffbeb;
@@ -141,7 +141,7 @@ body {
 
 .input-field {
   width: 100%;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid var(--color-border);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 14px;
@@ -150,7 +150,7 @@ body {
   background: white;
   outline: none;
 }
-.input-field:focus { border-color: #1a56db; box-shadow: 0 0 0 3px rgba(26,86,219,0.1); }
+.input-field:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(146, 60, 34, 0.1); }
 
 textarea.input-field { resize: vertical; min-height: 80px; }
 
