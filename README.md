@@ -1,6 +1,6 @@
 # NyayaMitra: AI-Enhanced Legal Aid Platform for First-Generation Litigants
 
-**Live Working Demo Link:** `[ Insert Vercel/Render Link Here ]`
+**Live Working Demo Link:** https://project-legal-o8gx.vercel.app/
 
 **Screenshots / Screen Recording:**
 <img width="1919" height="906" alt="Screenshot 2026-04-01 151421" src="https://github.com/user-attachments/assets/66be4d7e-2a1c-493f-8314-5de9d1d2bc4c" />
@@ -9,7 +9,8 @@ Video Link - https://drive.google.com/file/d/16jZc6bzrzVmW7RAoTZ9VGD_YB8O0mVpA/v
 
 ## 👥 Project Title & Team Details
 **Project Title:** AI-Enhanced Legal Aid Platform for First-Generation Litigants  
-**Team Name:** Team NyayaMitra  
+**Team Name:** Team Fusion Optimizer
+
 **Team Members:**
 - Swayam Garg
 - Yuvraj Pandiya
