@@ -1,69 +1,149 @@
-# NyayaSaathi - AI-Powered Legal Aid Platform
+# NyayaMitra: AI-Enhanced Legal Aid Platform for First-Generation Litigants
 
-*Empowering first-generation litigants in India with accessible, bilingual legal rights and document generation.*
+**Live Working Demo Link:** `[ Insert Vercel/Render Link Here ]`
 
-**Live Demo:** [https://nyayasaathi.vercel.app](https://nyayasaathi.vercel.app) *(Replace with actual deployed link)*
-
----
-
-## 1. Project Overview & Identity
-
-**Team Name:** Team Nyaya
-**Team Members:** Swayam Garg & Team *(Update as needed)*
-
-### Problem Statement (WD-04 / Web Development Domain)
-India has over 45 million pending court cases, and the legal system often feels inaccessible to the common citizen—especially first-generation litigants. The problem is a lack of accessible, plain-language legal information, expensive legal consultations, and complex procedural paperwork. Our platform solves this by providing simplified legal rights natively in Hindi and English, step-by-step procedures, and automatic document generation for common legal situations (like RTIs, Consumer Complaints, and FIRs).
-
-### Methodology / Approach
-- **Bilingual First:** We designed the system ground-up using \`i18next\` and Noto Sans Devanagari to cater to the massive Hindi-speaking demographic.
-- **Responsible AI (Dual-Display):** To build trust, AI-simplified rights are displayed *side-by-side* with the original verified law text from IndiaCode.
-- **Client-Side Generation:** We utilized \`jsPDF\` to generate legal PDFs entirely on the client side, ensuring that sensitive personal data (names, addresses) is not persistently stored on a server unnecessarily.
-- **Component-Driven Design:** Built with Next.js 14 App Router and a custom Tailwind token system mapped to a strict design spec (justice blue and saffron orange palette).
+**Screenshots / Screen Recording:**
+`[ Insert Screenshots / Demo Video Link Here ]`
 
 ---
 
-## 2. Technical Architecture & Documentation
+## 👥 Project Title & Team Details
+**Project Title:** AI-Enhanced Legal Aid Platform for First-Generation Litigants  
+**Team Name:** Team NyayaMitra  
+**Team Members:**
+- Swayam Garg
+- Yuvraj Pandiya
+- Ajay Sahani
+- Nikhil Singh Rajput
 
-### Architecture Diagram
+---
 
-\`\`\`mermaid
+## 🎯 Problem Statement Overview
+**Selected Problem (WD-04):** Build a legal aid web platform.
+
+**Core Solution Approach:**  
+India has over 45 million pending court cases, leaving first-generation litigants overwhelmed by legal jargon and complex procedures. Our platform, **NyayaMitra**, solves this by providing a categorised **Legal Situation Selector** (e.g., Landlord Dispute, Consumer Complaint, FIR Filing). 
+
+When a user selects a life event, the platform:
+1. **Explains Legal Rights** in plain language (Hindi & English) dynamically using AI, alongside the actual legal text.
+2. Generates an interactive **Document Checklist** and **Step-by-Step Procedure**.
+3. Features a map-based **Legal Aid Directory** connecting users with nearby pro bono lawyers and NALSA clinics.
+4. Includes a **Document Template Generator** that automatically produces filled-in legal notices, complaints, or RTI applications ready for download.
+
+---
+
+## 🏗 Technical Documentation (+3 Bonus Points Criteria)
+
+### 1. Architecture Diagram
+```mermaid
 graph TD
-    Client[Browser / Mobile Client]
-    NextJS[Next.js 14 Frontend - React UI]
-    LocalBridge[Frontend API Routes]
+    Client[Client Browser / Mobile UI]
+    NextJS[Next.js 14 Frontend - React]
     Express[Node.js + Express Backend]
     MongoDB[(MongoDB Atlas)]
-    LLM[Google Gemini 1.5 Flash API]
+    Gemini[Google Gemini 1.5 Flash API]
+    Maps[Google Maps API]
 
-    Client <-->|Bilingual UI & PDF Generation| NextJS
-    NextJS <-->|REST| LocalBridge
-    LocalBridge <-->|API Calls| Express
-    Express <-->|Read Static/Dynamic Data| MongoDB
-    Express <-->|Fetch Explanations| LLM
-\`\`\`
+    Client <-->|Bilingual UI & Client-Side PDF Gen| NextJS
+    NextJS <-->|REST API Calls| Express
+    Express <-->|Read / Write| MongoDB
+    Express <-->|Legal Translating & Chat| Gemini
+    NextJS <-->|Geolocation| Maps
+```
 
-### User Flow Diagram
+### 2. System Workflow / User Flow
+*Eraser Prompt for diagram generation:*
+```text
+// Eraser.io Prompt
+User Activity [icon: user] > Home Page [icon: home]
+Home Page > Select Language (English/Hindi) [icon: globe]
+Select Language > Situation Selector [icon: grid]
+Situation Selector > Select Legal Issue (e.g., FIR, Consumer) [icon: file-text]
+Select Legal Issue > Rights Explainer (AI vs Original Law) [icon: book-open]
+Rights Explainer > Step-by-Step Procedure [icon: list]
+Step-by-Step Procedure > Generates Document Checklist [icon: check-circle]
+Generates Document Checklist > Action Decision [icon: git-branch]
+Action Decision > Lawyer Directory (Map View) [icon: map-pin]
+Action Decision > Document Generator (Auto-fill PDF) [icon: download]
+```
 
-\`\`\`mermaid
-graph LR
-    A[Home Page] --> B{Select Language}
-    B -->|Hindi / English| C[Situations Selector]
-    C --> D[Select Legal Issue]
-    D --> E[Rights Explainer Tab]
-    E -->|Dual Display UI| F[Procedure & Checklist]
-    F --> G{Action Needed?}
-    G -->|Need Lawyer| H[Lawyer Directory]
-    G -->|Need Document| I[Document Generator]
-    I --> J[Download PDF]
-\`\`\`
+### 3. Setup and Installation Instructions
 
-### Database Schema (Entity-Relationship Diagram)
+**Prerequisites:** Node.js (v18+) and npm.
 
-\`\`\`mermaid
+**Step 1: Clone the repository**
+```bash
+git clone https://github.com/Swayam7Garg/Project_Legal.git
+cd Project_Legal
+```
+
+**Step 2: Backend Setup**
+```bash
+cd backend
+npm install
+npm run dev
+# Server runs on http://localhost:5000
+```
+
+**Step 3: Frontend Setup**
+```bash
+cd ../frontend
+npm install
+npm run dev
+# App runs on http://localhost:3000
+```
+
+### 4. Folder Structure Explanation
+```text
+Project_Legal/
+├── backend/                  # Node.js + Express API
+│   ├── src/
+│   │   ├── models/           # Mongoose schemas (Situations, Lawyers)
+│   │   ├── routes/           # Endpoints for AI, Lawyers, Situations
+│   │   └── services/         # LLM LangChain integration
+├── frontend/                 # Next.js 14 React Application
+│   ├── app/                  # App Router (Pages: /situations, /lawyers, /translate)
+│   ├── components/           # Reusable UI (Earthen Theme, Maps, Chatbots)
+│   ├── data/                 # JSON static structures & Dummy Data
+│   ├── lib/                  # jsPDF Logic for Document Generation
+│   └── locales/              # i18next dictionaries (English & Hindi)
+```
+
+### 5. Environment Variables
+Provide the following variables in their respective directories.
+
+**`backend/.env`**
+```env
+PORT=5000
+NODE_ENV=development
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/test
+GEMINI_API_KEY=your_gemini_api_key_here
+FRONTEND_URL=http://localhost:3000
+```
+
+**`frontend/.env.local`**
+```env
+NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key_here
+```
+
+### 6. Sample Test Inputs
+To verify the application's logic, judges can use the following test data:
+- **Simplify Legal Document Input (Translate Feature):**
+  > *"Whoever, being in any manner entrusted with property, or with any dominion over property, dishonestly misappropriates or converts to his own use that property, commits criminal breach of trust." (IPC Section 405)*
+- **Chatbot / Legal Query:**
+  > *"My landlord is refusing to return my security deposit of ₹20,000 even though I gave proper notice. Check my rights."*
+- **Map Location Testing:** Filter by "Indore" to see the custom integrated hardcoded legal aid clinics and synthetic lawyer data.
+
+---
+
+## 🗄 Domain-Specific Requirements
+
+### Database Schema (ERD)
+```mermaid
 erDiagram
     SITUATION {
-        string _id PK
-        string slug
+        string slug PK
         string category
         object title "en, hi"
         object description "en, hi"
@@ -71,115 +151,33 @@ erDiagram
         array laws
         array checklist
         array steps
-        string templateType
     }
     LAWYER {
-        string _id PK
+        string id PK
         string name
         array specializations
-        string state
         string city
         string phone
-        string email
-        string organization
-        array languages
         boolean proBono
-        number experience
-        string barCouncilId
-        number rating
+        object coordinates "lat, lng"
     }
+    
+    SITUATION ||--o{ LAWYER : "Matched by Specialization"
+```
 
-    SITUATION ||--o{ LAWYER : "Addressed by (Specializations match)"
-\`\`\`
-
----
-
-## 3. Setup & Installation Instructions
-
-This project requires **Node.js (v18+)** and **npm** to run locally. It is split into two directories: \`frontend\` and \`backend\`.
-
-### Step 1: Clone the repository
-\`\`\`bash
-git clone https://github.com/Swayam7Garg/Nyaya-Sathi.git
-cd Nyaya-Sathi
-\`\`\`
-
-### Step 2: Backend Setup
-Open a new terminal window:
-\`\`\`bash
-cd backend
-npm install
-npm run dev
-\`\`\`
-*The backend server will start running at \`http://localhost:5000\`.*
-
-### Step 3: Frontend Setup
-Open another terminal window:
-\`\`\`bash
-cd frontend
-npm install
-npm run dev
-\`\`\`
-*The frontend application will start running at \`http://localhost:3000\`.*
+### Role-Based Access Logic
+Because NyayaMitra is fundamentally designed as a **public-good Legal Aid platform**, all core resources (rights explanations, chatbots, maps, document generation) are exposed via **Public User Access** to ensure maximum reach for marginalized communities without the friction of authentication. 
+*Note: In future production iterations, an `Admin` role will be introduced specifically to continuously update verified legal laws, schemes, and the Pro Bono Lawyer Directory.*
 
 ---
 
-## 4. Environment Configuration
+## ⚖️ Technical Ethics & Transparency
 
-### Backend (\`backend/.env\`)
-Create an \`.env\` file in the \`backend\` folder with the following keys:
-\`\`\`env
-PORT=5000
-NODE_ENV=development
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/legalaid?retryWrites=true&w=majority
-GEMINI_API_KEY=AIzaSy_YOUR_GEMINI_API_KEY_HERE
-FRONTEND_URL=http://localhost:3000
-\`\`\`
+### AI Usage Declaration
+- **Google Gemini 1.5 Flash:** Used extensively via LangChain in the backend for the "Simplify Document" feature, interactive legal chatbot, and context-aware plain-English/Hindi rights explanations.
+- **GitHub Copilot / Cursor AI:** Used as pair-programming assistants during the hackathon to accelerate React component boilerplate generation, CSS styling, and debugging frontend build errors.
+- *Strict Prompt Constraints:* Our AI integration utilizes aggressive system instructions to ensure the LLM **does not hallucinate laws**, strictly formats output at an 8th-grade reading level, and explicitly declares: *"This is legal information, not legal advice."*
 
-### Frontend (\`frontend/.env.local\`)
-Create an \`.env.local\` file in the \`frontend\` folder with the following keys:
-\`\`\`env
-NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-\`\`\`
-
----
-
-## 5. Folder Structure
-
-\`\`\`text
-Nyaya-Sathi/
-├── backend/                  # Express API Server
-│   ├── src/
-│   │   ├── config/           # Database configuration
-│   │   ├── data/             # Seed data (situations, lawyers)
-│   │   ├── middleware/       # Error handling
-│   │   ├── models/           # Mongoose schemas
-│   │   ├── routes/           # API Endpoints (AI, Situations, Lawyers)
-│   │   └── server.js         # Entry point
-│   └── package.json
-└── frontend/                 # Next.js 14 Frontend Application
-    ├── app/                  # App Router pages (/situations, /generate, etc.)
-    ├── components/           # Reusable UI components
-    │   ├── generate/         # Document Form and Preview UI
-    │   ├── lawyers/          # Lawyer Directory Cards and Filters
-    │   ├── layout/           # Navbar, Disclaimer Banner
-    │   ├── shared/           # Language Toggle, Stepper, AI Badges
-    │   └── situations/       # Explainer UI (Dual Display, Checklist)
-    ├── data/                 # Static fallback data files
-    ├── lib/                  # Utility functions (jsPDF logic, API wrap)
-    ├── locales/              # i18n translation JSON chunks (en/hi)
-    ├── types/                # TypeScript interfaces
-    ├── next.config.ts
-    └── package.json
-\`\`\`
-
----
-
-## 6. Mobile Responsiveness & Accessibility
-- **Mobile First Approach**: The application was built targeting a \`375px\` viewport first. Navigation collapses into a responsive bottom/side drawer. The Dual-Display Explainer accurately stacks the Plain Language rights strictly above the Law Text citations on mobile screens for ease of reading.
-- **Responsiveness Proof**: CSS media queries scale fonts, flex-directions, and paddings seamlessly across \`768px\` and \`1280px\` breakpoint tiers.
-- **Accessibility features**: The app avoids complex JS pop-ups in favor of native HTML semantics and high-contrast texts.
-
----
-*Created for Hackathon 2026. Code is open-source.*
+### Data Sources & Synthetic Data
+- **Real Legal Sources:** Situation laws, rights, and NALSA structures are referenced from **IndiaCode (indiacode.nic.in)** and **NALSA (nalsa.gov.in)**.
+- **Synthetic Data Declaration:** We explicitly used **synthetic (dummy) data** for populating the Lawyer Directory (specifically the Indore, MP entries and placeholder names/numbers like "Advocate Rajesh Sharma") for testing the map plotting and filtering logic safely. Delhi legal aid coordinates map to real public addresses for demonstration purposes.
