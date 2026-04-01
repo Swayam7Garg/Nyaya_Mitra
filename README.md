@@ -53,20 +53,7 @@ graph TD
 ```
 
 ### 2. System Workflow / User Flow
-*Eraser Prompt for diagram generation:*
-```text
-// Eraser.io Prompt
-User Activity [icon: user] > Home Page [icon: home]
-Home Page > Select Language (English/Hindi) [icon: globe]
-Select Language > Situation Selector [icon: grid]
-Situation Selector > Select Legal Issue (e.g., FIR, Consumer) [icon: file-text]
-Select Legal Issue > Rights Explainer (AI vs Original Law) [icon: book-open]
-Rights Explainer > Step-by-Step Procedure [icon: list]
-Step-by-Step Procedure > Generates Document Checklist [icon: check-circle]
-Generates Document Checklist > Action Decision [icon: git-branch]
-Action Decision > Lawyer Directory (Map View) [icon: map-pin]
-Action Decision > Document Generator (Auto-fill PDF) [icon: download]
-```
+*Eraser Prompt for diagram generation:*<img width="1164" height="605" alt="Screenshot 2026-04-01 144958" src="https://github.com/user-attachments/assets/a9992d19-d705-4424-833a-e5ec705a1bca" />
 
 ### 3. Setup and Installation Instructions
 
