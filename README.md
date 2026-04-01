@@ -3,8 +3,8 @@
 **Live Working Demo Link:** `[ Insert Vercel/Render Link Here ]`
 
 **Screenshots / Screen Recording:**
-`[ Insert Screenshots / Demo Video Link Here ]`
-
+<img width="1919" height="906" alt="Screenshot 2026-04-01 151421" src="https://github.com/user-attachments/assets/66be4d7e-2a1c-493f-8314-5de9d1d2bc4c" />
+Video Link - https://drive.google.com/file/d/16jZc6bzrzVmW7RAoTZ9VGD_YB8O0mVpA/view?usp=sharing
 ---
 
 ## 👥 Project Title & Team Details
