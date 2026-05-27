@@ -1,6 +1,8 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
 
+export const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+
 interface User {
   username: string;
   roles: string[];
