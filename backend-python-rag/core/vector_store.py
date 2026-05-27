@@ -59,12 +59,12 @@ class PgVectorCollection:
                 # cosine similarity = 1 - cosine distance
                 cur.execute(
                     """
-                    SELECT document, metadata, embedding <=> %s AS distance
+                    SELECT document, metadata, embedding <=> %s::vector AS distance
                     FROM document_embeddings
                     ORDER BY distance
                     LIMIT %s
                     """,
-                    (query_emb, n_results)
+                    (str(query_emb), n_results)
                 )
                 rows = cur.fetchall()
                 
