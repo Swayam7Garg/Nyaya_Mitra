@@ -6,6 +6,8 @@ import {
   Scale, RefreshCw, MessageSquare
 } from 'lucide-react';
 import type { Situation } from '../../types';
+import { useAuth } from '../../context/AuthContext';
+import AuthModal from '../shared/AuthModal';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Message {
@@ -78,6 +80,10 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
   const isHi = i18n.language === 'hi';
   const hFont = isHi ? 'Noto Sans Devanagari, sans-serif' : 'Inter, sans-serif';
   const lang = i18n.language as 'en' | 'hi';
+
+  const { user } = useAuth();
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authReason, setAuthReason] = useState<'document' | 'chat' | 'lawyer' | null>(null);
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -376,6 +382,30 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
             </div>
           )}
 
+          {!user && messages.length > 2 && (
+            <div style={{
+              background: 'rgba(146, 60, 34, 0.05)', border: '1.5px dashed #923c22',
+              borderRadius: 14, padding: '16px 20px', display: 'flex',
+              flexDirection: 'column', gap: 12, alignItems: 'flex-start',
+              animation: 'bubbleIn 0.3s ease-out'
+            }}>
+              <span style={{ fontSize: 13, color: '#732F1A', fontWeight: 600, fontFamily: hFont, lineHeight: 1.5 }}>
+                💡 {isHi ? 'इस चैट इतिहास को सहेजने और बाद में सुरक्षित रूप से पुनः प्राप्त करने के लिए एक निःशुल्क खाता बनाएं।' : 'Sign up for a free account to save this chat history and securely retrieve it later.'}
+              </span>
+              <button
+                onClick={() => { setAuthReason('chat'); setAuthOpen(true); }}
+                style={{
+                  background: '#923c22', color: 'white', border: 'none',
+                  padding: '8px 18px', borderRadius: 20, fontSize: 12,
+                  fontWeight: 700, cursor: 'pointer', fontFamily: hFont,
+                  boxShadow: '0 2px 8px rgba(146,60,34,0.15)'
+                }}
+              >
+                {isHi ? 'मुफ़्त खाता बनाएं' : 'Create Free Account'}
+              </button>
+            </div>
+          )}
+
           <div ref={bottomRef} />
         </div>
 
@@ -507,6 +537,7 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
 
         <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
       </div>
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} triggerReason={authReason} />
     </>
   );
 }

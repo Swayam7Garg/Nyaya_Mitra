@@ -10,6 +10,8 @@ import { generateComplaintPDF, generateRTIPDF, generateFIRDraftPDF, generateCons
 import ProgressStepper from '../../../components/shared/ProgressStepper';
 import situationsData from '../../../data/situations';
 import type { DocumentFormData } from '../../../types';
+import { useAuth } from '../../../context/AuthContext';
+import AuthModal from '../../../components/shared/AuthModal';
 
 const lawCitations: Record<string, string> = {
   'landlord-dispute': 'Transfer of Property Act 1882 (Section 106)',
@@ -42,14 +44,27 @@ const EMPTY: DocumentFormData = {
 export default function GeneratePage() {
   const { slug } = useParams<{ slug: string }>();
   const { t, i18n } = useTranslation();
+  const { user } = useAuth();
   const situation = situationsData.find(s => s.id === slug);
   const [step, setStep] = useState(1);
   const [fields, setFields] = useState<DocumentFormData>(EMPTY);
   const [copied, setCopied] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authReason, setAuthReason] = useState<'document' | 'chat' | 'lawyer' | null>(null);
+
   const lang = i18n.language as 'en' | 'hi';
   const isHi = lang === 'hi';
   const hFont = isHi ? 'Noto Sans Devanagari, sans-serif' : 'Inter, sans-serif';
   const templateType = situation?.templateType || 'complaint';
+
+  const handleNextStep = () => {
+    if (step === 2 && !user) {
+      setAuthReason('document');
+      setAuthOpen(true);
+      return;
+    }
+    setStep(s => Math.min(3, s + 1));
+  };
 
   const docTitleObj = docTitles[slug] ?? { en: 'Legal Complaint Letter', hi: 'कानूनी शिकायत पत्र' };
   const docTitle = docTitleObj[lang];
@@ -185,7 +200,7 @@ export default function GeneratePage() {
                         <ArrowLeft size={14} /> {isHi ? 'वापस' : t('generate.back')}
                       </button>
                     )}
-                    <button style={btnPrimary} onClick={() => setStep(s => Math.min(3, s + 1))}>
+                    <button style={btnPrimary} onClick={handleNextStep}>
                       {isHi ? 'आगला' : t('generate.next')} <ArrowRight size={14} />
                     </button>
                   </div>
@@ -253,6 +268,7 @@ export default function GeneratePage() {
           )}
         </div>
       </div>
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} triggerReason={authReason} onSuccess={() => setStep(3)} />
     </div>
   );
 }

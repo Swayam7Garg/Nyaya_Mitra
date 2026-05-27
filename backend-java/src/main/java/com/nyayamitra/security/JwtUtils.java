@@ -37,8 +37,14 @@ public class JwtUtils {
     /** Generate a signed JWT token from authenticated user principal */
     public String generateToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return generateToken(userDetails.getUsername(), userDetails.getAuthorities().stream().map(a -> a.getAuthority()).toList());
+    }
+
+    /** Generate a signed JWT token from username and roles directly */
+    public String generateToken(String username, java.util.Collection<String> roles) {
         return Jwts.builder()
-            .subject(userDetails.getUsername())
+            .subject(username)
+            .claim("roles", roles)
             .issuedAt(new Date())
             .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
             .signWith(key())

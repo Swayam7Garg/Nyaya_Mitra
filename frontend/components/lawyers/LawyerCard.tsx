@@ -2,17 +2,31 @@
 import { useTranslation } from 'react-i18next';
 import { MapPin, Clock, Phone, Navigation } from 'lucide-react';
 import type { Lawyer } from '../../types';
+import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
+import AuthModal from '../shared/AuthModal';
 
 export default function LawyerCard({ lawyer, selected }: { lawyer: Lawyer; selected?: boolean }) {
   const { i18n } = useTranslation();
   const isHi = i18n.language === 'hi';
   const hFont = isHi ? 'Noto Sans Devanagari, sans-serif' : 'Inter, sans-serif';
 
+  const { user } = useAuth();
+  const [authOpen, setAuthOpen] = useState(false);
+  const [booked, setBooked] = useState(false);
+
   const handleCall = () => { if (lawyer.phone) window.location.href = `tel:${lawyer.phone}`; };
   const handleDir = () => {
     if (lawyer.lat && lawyer.lng) {
       window.open(`https://www.google.com/maps/dir/?api=1&destination=${lawyer.lat},${lawyer.lng}`, '_blank');
     }
+  };
+  const handleBook = () => {
+    if (!user) {
+      setAuthOpen(true);
+      return;
+    }
+    setBooked(true);
   };
 
   return (
@@ -82,6 +96,27 @@ export default function LawyerCard({ lawyer, selected }: { lawyer: Lawyer; selec
           <Navigation size={13} /> {isHi ? 'दिशा-निर्देश' : 'Directions'}
         </button>
       </div>
+
+      {booked ? (
+        <div style={{
+          background: '#E0ECD6', color: '#455B3C', padding: '10px',
+          borderRadius: 24, fontSize: 12, fontWeight: 700, textAlign: 'center',
+          marginTop: 10, fontFamily: hFont, border: '1px solid #c3e6cb'
+        }}>
+          ✓ {isHi ? 'अपॉइंटमेंट अनुरोध भेजा गया!' : 'Appointment Request Sent!'}
+        </div>
+      ) : (
+        <button onClick={handleBook} style={{
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+          background: '#455B3C', border: 'none', color: 'white',
+          padding: '10px 0', fontSize: 12, fontWeight: 700, cursor: 'pointer',
+          borderRadius: 24, fontFamily: hFont, marginTop: 10
+        }}>
+          {isHi ? 'मुफ़्त अपॉइंटमेंट बुक करें' : 'Book Free Appointment'}
+        </button>
+      )}
+
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} triggerReason="lawyer" onSuccess={() => setBooked(true)} />
     </div>
   );
 }

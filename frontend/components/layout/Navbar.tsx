@@ -4,10 +4,14 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { Scale, Menu, X } from 'lucide-react';
 import LanguageToggle from '../shared/LanguageToggle';
+import { useAuth } from '../../context/AuthContext';
+import AuthModal from '../shared/AuthModal';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const links = [
     { href: '/', label: t('nav.home') },
@@ -36,7 +40,7 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-          <div style={{ display: 'flex', gap: 16 }}>
+          <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
             {links.map(l => (
               <Link key={l.href} href={l.href} style={{
                 padding: '6px 12px', borderRadius: 8, fontSize: 14, fontWeight: 500,
@@ -47,15 +51,63 @@ export default function Navbar() {
               >{l.label}</Link>
             ))}
           </div>
-          <LanguageToggle />
-          <Link href="/situations" style={{ background: '#923c22', color: 'white', padding: '10px 24px', borderRadius: 24, fontSize: 14, fontWeight: 600, textDecoration: 'none', marginLeft: 16 }}>
-             {isHi ? 'मदद लें' : 'Get Help'}
-          </Link>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <LanguageToggle />
+            
+            {user ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                {user.roles.includes('ROLE_ADMIN') && (
+                  <Link 
+                    href="/admin" 
+                    style={{ 
+                      fontSize: 13, fontWeight: 700, color: '#923c22', 
+                      fontFamily: hFont, textDecoration: 'none',
+                      background: '#923c2220', padding: '4px 10px', borderRadius: 12
+                    }}
+                  >
+                    Admin Panel
+                  </Link>
+                )}
+                <span style={{ fontSize: 13, fontWeight: 700, color: '#923c22', fontFamily: hFont }}>
+                  👤 {user.username}
+                </span>
+                <button
+                  onClick={logout}
+                  style={{
+                    background: 'transparent', border: '1.5px solid #923c22', color: '#923c22',
+                    padding: '8px 16px', borderRadius: 20, fontSize: 12, fontWeight: 700,
+                    cursor: 'pointer', fontFamily: hFont
+                  }}
+                >
+                  {isHi ? 'लॉग आउट' : 'Log Out'}
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setAuthOpen(true)}
+                style={{
+                  background: 'transparent', border: '1.5px solid #923c22', color: '#923c22',
+                  padding: '8px 16px', borderRadius: 20, fontSize: 12, fontWeight: 700,
+                  cursor: 'pointer', fontFamily: hFont
+                }}
+              >
+                {isHi ? 'लॉग इन' : 'Log In'}
+              </button>
+            )}
+
+            <Link href="/situations" style={{ background: '#923c22', color: 'white', padding: '10px 24px', borderRadius: 24, fontSize: 14, fontWeight: 600, textDecoration: 'none' }}>
+               {isHi ? 'मदद लें' : 'Get Help'}
+            </Link>
+          </div>
+
           <button onClick={() => setOpen(v => !v)} style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer' }} className="mobile-menu-btn" aria-label="Menu">
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
+
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
 
       {/* Mobile drawer */}
       {open && (

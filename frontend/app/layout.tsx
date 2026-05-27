@@ -3,6 +3,7 @@ import './globals.css';
 import I18nProvider from '../components/shared/I18nProvider';
 import Navbar from '../components/layout/Navbar';
 import DisclaimerBanner from '../components/layout/DisclaimerBanner';
+import { AuthProvider } from '../context/AuthContext';
 
 export const metadata: Metadata = {
   title: 'NyayaSaathi — Free Legal Aid Platform',
@@ -20,13 +21,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
-        <I18nProvider>
-          <Navbar />
-          <main style={{ minHeight: 'calc(100vh - 61px)', display: 'flex', flexDirection: 'column' }}>
-            {children}
-          </main>
-          <DisclaimerBanner />
-        </I18nProvider>
+        <AuthProvider>
+          <I18nProvider>
+            <Navbar />
+            <main style={{ minHeight: 'calc(100vh - 61px)', display: 'flex', flexDirection: 'column' }}>
+              {children}
+            </main>
+            <DisclaimerBanner />
+          </I18nProvider>
+        </AuthProvider>
       </body>
     </html>
   );

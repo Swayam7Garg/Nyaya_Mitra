@@ -2,6 +2,7 @@ package com.nyayamitra.config;
 
 import com.nyayamitra.security.JwtAuthFilter;
 import com.nyayamitra.security.UserDetailsServiceImpl;
+import com.nyayamitra.security.OAuth2LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -56,6 +57,8 @@ public class SecurityConfig {
     @Value("${cors.allowed-origins}")
     private String allowedOrigin;
 
+    @Autowired private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -96,6 +99,9 @@ public class SecurityConfig {
                 .requestMatchers("/swagger-ui/**", "/api-docs/**", "/swagger-ui.html").permitAll()
                 // Everything else requires auth
                 .anyRequest().authenticated()
+            )
+            .oauth2Login(oauth2 -> oauth2
+                .successHandler(oAuth2LoginSuccessHandler)
             )
             .authenticationProvider(authenticationProvider())
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

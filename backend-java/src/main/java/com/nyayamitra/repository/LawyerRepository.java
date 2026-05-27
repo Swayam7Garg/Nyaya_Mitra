@@ -17,6 +17,9 @@ public interface LawyerRepository extends JpaRepository<Lawyer, Long> {
 
     boolean existsByBarCouncilId(String barCouncilId);
 
+    /** For admin stats dashboard */
+    long countByProBonoTrue();
+
     /** Mirrors: Lawyer.find({ proBono: true }) */
     List<Lawyer> findByProBonoTrue();
 
