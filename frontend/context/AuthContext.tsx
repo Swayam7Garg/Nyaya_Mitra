@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
 
@@ -42,7 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setLoading(false);
   }, []);
 
-  const login = async (username: string, password: string) => {
+  const login = useCallback(async (username: string, password: string) => {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
       const res = await fetch(`${baseUrl}/api/auth/login`, {
@@ -65,17 +65,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (err) {
       return { success: false, error: 'Cannot connect to server. Please try again later.' };
     }
-  };
+  }, []);
 
-  const loginWithToken = (token: string, username: string, roles: string[]) => {
+  const loginWithToken = useCallback((token: string, username: string, roles: string[]) => {
     const userData: User = { username, roles };
     localStorage.setItem('nyayamitra_token', token);
     localStorage.setItem('nyayamitra_user', JSON.stringify(userData));
     setToken(token);
     setUser(userData);
-  };
+  }, []);
 
-  const register = async (username: string, email: string, password: string) => {
+  const register = useCallback(async (username: string, email: string, password: string) => {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
       const res = await fetch(`${baseUrl}/api/auth/register`, {
@@ -98,14 +98,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (err) {
       return { success: false, error: 'Cannot connect to server. Please try again later.' };
     }
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem('nyayamitra_token');
     localStorage.removeItem('nyayamitra_user');
     setToken(null);
     setUser(null);
-  };
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, token, loading, login, loginWithToken, register, logout }}>
