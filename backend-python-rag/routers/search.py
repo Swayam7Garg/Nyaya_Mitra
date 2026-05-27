@@ -142,10 +142,16 @@ async def search(request: SearchRequest):
         )
 
     if not chunks:
-        raise HTTPException(
-            status_code=404,
-            detail="No documents have been ingested yet. "
-                   "Please upload legal PDFs via POST /ingest first."
+        no_docs_msg = (
+            "अभी तक कोई दस्तावेज़ अपलोड नहीं हुआ है। कृपया पहले Knowledge Base में कानूनी PDF अपलोड करें। / "
+            "No documents have been ingested yet. Please upload legal PDFs via the Knowledge Base page first."
+        )
+        return SearchResponse(
+            query=request.query,
+            answer=no_docs_msg,
+            sources=[],
+            chunks_used=0,
+            context_previews=[],
         )
 
     try:

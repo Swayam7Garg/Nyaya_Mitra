@@ -86,8 +86,10 @@ def get_collection():
 
 def collection_stats() -> dict:
     col = get_collection()
+    total = col.count()
     return {
         "collection": "document_embeddings",
-        "total_chunks": col.count(),
+        "total_chunks": total,
+        "count": total,
         "chroma_server": "pgvector_supabase",
     }
