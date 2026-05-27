@@ -6,24 +6,20 @@ from retrieved ChromaDB context chunks.
 """
 
 import os
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
 # Configure Gemini once at module level
 _API_KEY = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
-if _API_KEY:
-    genai.configure(api_key=_API_KEY)
+_client = genai.Client(api_key=_API_KEY) if _API_KEY else None
 
 _model = None
 
 
-def _get_model():
-    global _model
-    if _model is None:
-        _model = genai.GenerativeModel("gemini-3.5-flash")
-    return _model
+def _get_model_name():
+    return "gemini-2.5-flash"
 
 
 SYSTEM_PROMPT = """You are NyayaMitra, a compassionate and knowledgeable legal assistant for India's first-time litigants.
@@ -92,8 +88,13 @@ USER QUESTION:
 
 ANSWER:"""
 
-    model = _get_model()
-    response = model.generate_content(prompt)
+    if not _client:
+        raise RuntimeError("Gemini API key not configured")
+    model_name = _get_model_name()
+    response = _client.models.generate_content(
+        model=model_name,
+        contents=prompt,
+    )
     answer_text = response.text.strip()
 
     return {

@@ -1,8 +1,6 @@
 fastapi
 uvicorn
 python-multipart
-langchain
-langchain-google-genai
 langchain-text-splitters
 pypdf
 pdfplumber
@@ -10,6 +8,6 @@ pytesseract
 pillow
 python-dotenv
 pydantic
-google-generativeai
+google-genai
 psycopg2-binary
 pgvector

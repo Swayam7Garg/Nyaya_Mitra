@@ -12,7 +12,7 @@ GET  /search/debug — Returns raw retrieved chunks without LLM generation
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-import google.generativeai as genai
+from google import genai
 import os
 from dotenv import load_dotenv
 
@@ -25,8 +25,7 @@ router = APIRouter(prefix="/search", tags=["RAG Search"])
 
 # ── Configure Gemini embedding for query ──────────────────────────────────────
 _API_KEY = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
-if _API_KEY:
-    genai.configure(api_key=_API_KEY)
+_client = genai.Client(api_key=_API_KEY) if _API_KEY else None
 
 
 # ── Request / Response models ─────────────────────────────────────────────────
@@ -63,13 +62,17 @@ class DebugSearchResponse(BaseModel):
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def _embed_query(text: str) -> list[float]:
     """Generate a RETRIEVAL_QUERY embedding for the user question."""
-    result = genai.embed_content(
-        model="models/gemini-embedding-2",
-        content=text,
-        task_type="RETRIEVAL_QUERY",
-        output_dimensionality=768,
+    if not _client:
+        raise RuntimeError("Gemini API key not configured")
+    result = _client.models.embed_content(
+        model="gemini-embedding-001",
+        contents=text,
+        config={
+            "task_type": "RETRIEVAL_QUERY",
+            "output_dimensionality": 768,
+        },
     )
-    return result["embedding"]
+    return result.embeddings[0].values
 
 
 def _retrieve(query: str, top_k: int) -> list[dict]:

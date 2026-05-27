@@ -13,6 +13,24 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# ── Normalize double-slash paths (e.g. //search → /search) ────────────────────
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+import re
+
+class NormalizePathMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        # Collapse consecutive slashes: //search → /search
+        scope = request.scope
+        path = scope.get("path", "/")
+        normalized = re.sub(r"/+", "/", path)
+        if normalized != path:
+            scope["path"] = normalized
+            scope["raw_path"] = normalized.encode("utf-8")
+        return await call_next(request)
+
+app.add_middleware(NormalizePathMiddleware)
+
 # Allow requests from the frontend
 frontend_url = os.getenv("FRONTEND_URL", "*")
 app.add_middleware(
