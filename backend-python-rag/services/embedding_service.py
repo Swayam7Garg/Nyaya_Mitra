@@ -34,21 +34,27 @@ def _get_client():
 
 def embed_chunks(chunks: list[dict]) -> list[list[float]]:
     """
-    Generates one embedding per chunk using Gemini embedding model.
+    Generates embeddings in batch using the Gemini embedding model.
     """
     client = _get_client()
     vectors = []
-
-    for chunk in chunks:
+    
+    # Process in batches of 100 chunks to prevent hitting API payload size limits
+    batch_size = 100
+    chunk_texts = [c["text"] for c in chunks]
+    
+    for i in range(0, len(chunk_texts), batch_size):
+        batch = chunk_texts[i:i + batch_size]
         result = client.models.embed_content(
             model="gemini-embedding-001",
-            contents=chunk["text"],
+            contents=batch,
             config={
                 "task_type": "RETRIEVAL_DOCUMENT",
                 "output_dimensionality": 768,
             },
         )
-        vectors.append(result.embeddings[0].values)
+        for emb in result.embeddings:
+            vectors.append(emb.values)
 
     print("Chunks:", len(chunks))
     print("Vectors:", len(vectors))
