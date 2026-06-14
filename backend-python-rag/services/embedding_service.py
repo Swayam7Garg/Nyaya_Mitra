@@ -24,6 +24,8 @@ def _get_client():
     global _client
     if _client is None:
         api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        if api_key:
+            api_key = api_key.strip()
         if not api_key:
             raise EnvironmentError(
                 "GOOGLE_API_KEY or GEMINI_API_KEY must be set in the environment."
