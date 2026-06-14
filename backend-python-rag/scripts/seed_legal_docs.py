@@ -288,17 +288,26 @@ try:
     cur.execute("DELETE FROM document_embeddings WHERE id LIKE 'seed_legal_doc_%'")
     conn.commit()
     
-    # Prepare arguments for batch insert
+    # Map category to official source URLs
+    source_urls = {
+        "rti": "https://www.indiacode.nic.in/handle/123456789/2055",
+        "fir": "https://www.indiacode.nic.in/handle/123456789/15272",
+        "consumer": "https://consumeraffairs.nic.in/acts-and-rules/consumer-protection-act-2019",
+        "civil": "https://www.indiacode.nic.in/handle/123456789/2143",
+        "criminal": "https://nalsa.gov.in/acts",
+    }
+
     args = []
     for idx, (chunk, vector) in enumerate(zip(legal_chunks, vectors)):
         chunk_id = f"seed_legal_doc_{idx}"
         metadata = {
             "source": "seed_indian_legal_docs",
-            "filename": "seed_indian_legal_guides.txt",
+            "filename": "Indian Legal Guides (NyayaMitra)",
+            "title": chunk["title"],
+            "source_url": source_urls.get(chunk["category"], "https://www.indiacode.nic.in"),
             "chunk_index": idx,
             "total_chunks": len(legal_chunks),
             "category": chunk["category"],
-            "title": chunk["title"]
         }
         args.append((chunk_id, str(vector), chunk["text"], Json(metadata)))
         

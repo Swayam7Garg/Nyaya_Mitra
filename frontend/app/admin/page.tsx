@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { ShieldAlert, Users, Scale, Trash2, CheckCircle2, AlertCircle, ArrowLeft, Shield } from 'lucide-react';
+import { ShieldAlert, Users, Scale, Trash2, CheckCircle2, AlertCircle, ArrowLeft, Shield, Database, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { API_BASE_URL } from '@/context/AuthContext';
 import Link from 'next/link';
@@ -208,6 +208,43 @@ export default function AdminDashboard() {
               <h3 className="text-3xl font-black text-gray-900 mt-1">{stats?.proBono ?? '-'}</h3>
             </div>
           </div>
+        </div>
+
+        {/* Quick Tools */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          <Link href="/admin/knowledge-base"
+            className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-[#EAE1DA] hover:border-[#923c22] hover:shadow-md transition-all group"
+            style={{ textDecoration: 'none' }}>
+            <div className="p-3 bg-[#FCF5EF] rounded-xl group-hover:bg-[#923c22] transition-colors">
+              <Database className="w-6 h-6 text-[#923c22] group-hover:text-white transition-colors" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-gray-900" style={{ fontFamily: hFont }}>
+                {isHi ? 'ज्ञान भंडार खोजें' : 'Knowledge Base Explorer'}
+              </p>
+              <p className="text-xs text-[#6A564A]" style={{ fontFamily: hFont }}>
+                {isHi ? 'सभी इंडेक्स किए गए कानूनी दस्तावेज़ देखें और सिमेंटिक खोज करें' : 'Browse & semantically search all indexed legal documents'}
+              </p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-[#923c22] ml-auto" />
+          </Link>
+
+          <Link href="/knowledge-base"
+            className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-[#EAE1DA] hover:border-[#923c22] hover:shadow-md transition-all group"
+            style={{ textDecoration: 'none' }}>
+            <div className="p-3 bg-[#FCF5EF] rounded-xl group-hover:bg-[#923c22] transition-colors">
+              <Scale className="w-6 h-6 text-[#923c22] group-hover:text-white transition-colors" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-gray-900" style={{ fontFamily: hFont }}>
+                {isHi ? 'दस्तावेज़ अपलोड करें' : 'Upload Documents'}
+              </p>
+              <p className="text-xs text-[#6A564A]" style={{ fontFamily: hFont }}>
+                {isHi ? 'नए PDF दस्तावेज़ RAG पाइपलाइन में जोड़ें' : 'Add new PDF documents to the RAG pipeline'}
+              </p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-[#923c22] ml-auto" />
+          </Link>
         </div>
 
         {/* User Management Section */}

@@ -15,6 +15,7 @@ from pydantic import BaseModel, Field
 from google import genai
 import os
 from dotenv import load_dotenv
+import psycopg2
 
 load_dotenv()
 
@@ -112,6 +113,7 @@ def _retrieve(query: str, top_k: int) -> list[dict]:
             "chunk_index": meta.get("chunk_index", 0),
             "total_chunks": meta.get("total_chunks", 0),
             "score": score,
+            "metadata": meta,  # full metadata for title/source_url display
         })
 
     # Sort by relevance score descending
@@ -155,7 +157,7 @@ async def search(request: SearchRequest):
         )
 
     try:
-        result = generate_answer(request.query, chunks)
+        result = generate_answer(request.query, chunks, language=request.language)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Gemini generation failed: {e}")
 
@@ -194,4 +196,124 @@ async def debug_search(request: SearchRequest):
         query=request.query,
         chunks=chunks,
         total_found=len(chunks),
+    )
+
+
+# ── GET /search/knowledge-base ────────────────────────────────────────────────
+# Admin-only endpoint: list all unique documents indexed in the vector store
+
+class KBDocument(BaseModel):
+    id: str
+    title: str
+    category: str
+    source_url: str
+    filename: str
+    created_at: str
+
+
+class KBListResponse(BaseModel):
+    total_chunks: int
+    documents: list[KBDocument]
+
+
+@router.get("/knowledge-base", response_model=KBListResponse,
+            summary="Admin: List all indexed documents in the knowledge base")
+async def list_knowledge_base():
+    """
+    Returns all unique documents stored in the pgvector knowledge base.
+    Intended for admin use to browse what has been indexed.
+    """
+    db_url = (os.getenv("SUPABASE_DB_URL") or "").strip()
+    if not db_url:
+        raise HTTPException(status_code=500, detail="SUPABASE_DB_URL not configured")
+    try:
+        conn = psycopg2.connect(db_url)
+        cur = conn.cursor()
+        cur.execute(
+            """
+            SELECT id,
+                   metadata->>'title'      AS title,
+                   metadata->>'category'   AS category,
+                   metadata->>'source_url' AS source_url,
+                   metadata->>'filename'   AS filename,
+                   created_at::text        AS created_at
+            FROM document_embeddings
+            ORDER BY created_at DESC
+            LIMIT 200
+            """
+        )
+        rows = cur.fetchall()
+        cur.execute("SELECT COUNT(*) FROM document_embeddings")
+        total = cur.fetchone()[0]
+        cur.close()
+        conn.close()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"DB error: {e}")
+
+    docs = [
+        KBDocument(
+            id=row[0] or "",
+            title=row[1] or "Untitled",
+            category=row[2] or "general",
+            source_url=row[3] or "",
+            filename=row[4] or "",
+            created_at=row[5] or "",
+        )
+        for row in rows
+    ]
+    return KBListResponse(total_chunks=total, documents=docs)
+
+
+# ── POST /search/knowledge-base/query ────────────────────────────────────────
+# Admin semantic search — raw chunks, no LLM, with scores
+
+class KBQueryRequest(BaseModel):
+    query: str = Field(..., min_length=2, max_length=1000)
+    top_k: int = Field(default=8, ge=1, le=20)
+
+
+class KBChunk(BaseModel):
+    id: str
+    title: str
+    category: str
+    source_url: str
+    score: float
+    preview: str
+
+
+class KBQueryResponse(BaseModel):
+    query: str
+    results: list[KBChunk]
+    total_found: int
+
+
+@router.post("/knowledge-base/query", response_model=KBQueryResponse,
+             summary="Admin: Semantic search the knowledge base (no LLM)")
+async def query_knowledge_base(request: KBQueryRequest):
+    """
+    Searches the pgvector knowledge base semantically and returns
+    the top matching chunks with similarity scores and source info.
+    Admin-only tool to test retrieval quality.
+    """
+    try:
+        chunks = _retrieve(request.query, request.top_k)
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Retrieval failed: {e}")
+
+    results = []
+    for chunk in chunks:
+        meta = chunk.get("metadata") or {}
+        results.append(KBChunk(
+            id=chunk.get("filename", ""),
+            title=meta.get("title") or meta.get("filename") or chunk.get("filename", "unknown"),
+            category=meta.get("category", "general"),
+            source_url=meta.get("source_url", ""),
+            score=round(chunk["score"], 4),
+            preview=chunk["text"][:300] + ("..." if len(chunk["text"]) > 300 else ""),
+        ))
+
+    return KBQueryResponse(
+        query=request.query,
+        results=results,
+        total_found=len(results),
     )

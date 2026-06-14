@@ -22,63 +22,80 @@ def _get_model_name():
     return "gemini-2.5-flash"
 
 
-SYSTEM_PROMPT = """You are NyayaMitra, a compassionate and knowledgeable legal assistant for India's first-time litigants.
+SYSTEM_PROMPT_TEMPLATE = """You are NyayaMitra, a compassionate and knowledgeable legal assistant for India's first-time litigants.
 
 Your role is to:
 1. Answer questions clearly and simply, avoiding complex legal jargon.
 2. Always ground your answer in the provided CONTEXT from legal documents.
-3. If the answer is found in the context, cite the source file name.
+3. If the answer is found in the context, cite the source title and URL in a "Sources" section.
 4. If the context doesn't have enough information, say so honestly — do NOT hallucinate.
-5. Support both Hindi and English. If the user asks in Hindi, answer in Hindi.
-6. Always advise the user to consult a qualified lawyer for their specific situation.
+5. CRITICAL — Language Rule: You MUST respond ONLY in {language_instruction}. Do NOT switch languages even if the query or documents are in another language.
+6. Always end by advising the user to consult a qualified lawyer for their specific situation.
 
 Format your response as:
 - A clear, plain-language answer (2–4 paragraphs)
-- A "Sources" section listing the filenames you referenced
-"""
+- A "Sources" section listing the document titles and official URLs you referenced"""
 
 
-def generate_answer(query: str, context_chunks: list[dict]) -> dict:
+def generate_answer(query: str, context_chunks: list[dict], language: str = "en") -> dict:
     """
-    Generate a grounded RAG answer using Gemini 3.5 Flash.
+    Generate a grounded RAG answer using Gemini Flash.
 
     Args:
         query: The user's legal question.
-        context_chunks: List of dicts with keys: text, filename, chunk_index, score.
+        context_chunks: List of dicts with keys: text, filename, chunk_index, score, metadata.
+        language: 'en' | 'hi' | 'auto' — controls response language strictly.
 
     Returns:
         dict with keys: answer (str), sources (list[str])
     """
-    # ── TEMPORARY DEBUG LOGS ──────────────────────────────────────────────────
-    print(f"\n[DEBUG] [Prompt Generation Stage] Starting chatbot generation flow.")
-    print(f"[DEBUG] [Prompt Generation Stage] User Query: '{query}'")
-    print(f"[DEBUG] [Prompt Generation Stage] Retrieved Chunk Count: {len(context_chunks)}")
-    print(f"[DEBUG] [Prompt Generation Stage] Selected Gemini Model: 'gemini-3.5-flash'")
-    print(f"[DEBUG] [Prompt Generation Stage] -----------------------------------------")
+    # ── Determine language instruction ────────────────────────────────────────
+    if language == "hi":
+        language_instruction = "Hindi (हिंदी)"
+    elif language == "en":
+        language_instruction = "English only"
+    else:
+        # auto: detect from query script — default to English for Latin queries
+        has_devanagari = any('\u0900' <= ch <= '\u097F' for ch in query)
+        language_instruction = "Hindi (हिंदी)" if has_devanagari else "English only"
+
+    system_prompt = SYSTEM_PROMPT_TEMPLATE.format(language_instruction=language_instruction)
+
+    print(f"\n[DEBUG] [Generation] Query: '{query}' | Language: {language} → {language_instruction}")
+    print(f"[DEBUG] [Generation] Chunks used: {len(context_chunks)}")
 
     if not context_chunks:
-        return {
-            "answer": (
-                "मुझे इस प्रश्न के लिए प्रासंगिक दस्तावेज़ नहीं मिले। / "
-                "I could not find relevant documents for this question. "
-                "Please consult a qualified lawyer."
-            ),
-            "sources": [],
-        }
+        no_docs = (
+            "No relevant documents found. Please consult a qualified lawyer."
+            if language != "hi" else
+            "इस प्रश्न के लिए प्रासंगिक दस्तावेज़ नहीं मिले। किसी योग्य वकील से सलाह लें।"
+        )
+        return {"answer": no_docs, "sources": []}
 
-    # Build context block with source labels
+    # Build context block — pull real title + source_url from metadata
     context_lines = []
     sources = []
     for i, chunk in enumerate(context_chunks):
-        filename = chunk.get("filename", "unknown")
+        meta = chunk.get("metadata") or {}
+        # metadata may be a dict (pgvector) or already parsed
+        if isinstance(meta, str):
+            import json
+            try:
+                meta = json.loads(meta)
+            except Exception:
+                meta = {}
+        title = meta.get("title") or meta.get("filename") or chunk.get("filename", "unknown")
+        source_url = meta.get("source_url", "")
+        label = f"{title}" + (f" ({source_url})" if source_url else "")
         text = chunk.get("text", "")
-        context_lines.append(f"[Source {i+1}: {filename}]\n{text}")
-        if filename not in sources:
-            sources.append(filename)
+        context_lines.append(f"[Source {i+1}: {label}]\n{text}")
+        source_entry = label if label not in sources else None
+        if source_entry:
+            sources.append(source_entry)
 
     context_block = "\n\n---\n\n".join(context_lines)
 
-    prompt = f"""{SYSTEM_PROMPT}
+    prompt = f"""{system_prompt}
 
 CONTEXT:
 {context_block}
