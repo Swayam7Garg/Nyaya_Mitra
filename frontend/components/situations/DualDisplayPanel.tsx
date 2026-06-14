@@ -54,7 +54,7 @@ function parseIntoCards(fullText: string): ArticleCard[] {
       const rest = para.slice(header.length).replace(/^[:\s–—-]+/, '').trim();
 
       // Extract the title (text before a dash or period)
-      const titleMatch = rest.match(/^([^.—–\n]+(?:\.(?!\s*\()|[^.—–\n])*?)(?:\s*[-–—]\s*|\.\s+|:\s+)(.+)/s);
+      const titleMatch = rest.match(/^([^.—–\n]+(?:\.(?!\s*\()|[^.—–\n])*?)(?:\s*[-–—]\s*|\.\s+|:\s+)([\s\S]+)/);
       const title = titleMatch ? titleMatch[1].trim() : rest.slice(0, 60).trim();
       const body = titleMatch ? titleMatch[2].trim() : rest;
 
