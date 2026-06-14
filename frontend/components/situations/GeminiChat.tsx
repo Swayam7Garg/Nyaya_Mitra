@@ -85,7 +85,28 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
   const [authOpen, setAuthOpen] = useState(false);
   const [authReason, setAuthReason] = useState<'document' | 'chat' | 'lawyer' | null>(null);
 
-  const [messages, setMessages] = useState<Message[]>([]);
+  // ── Session key for this situation + language ──────────────────────────────
+  const sessionKey = `nyaya_chat_${situation.id}_${lang}`;
+
+  // ── Load messages from sessionStorage on mount ─────────────────────────────
+  const loadSavedMessages = (): Message[] => {
+    if (typeof window === 'undefined') return [];
+    try {
+      const saved = sessionStorage.getItem(sessionKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Revive Date objects
+        return parsed.map((m: any) => ({ ...m, timestamp: new Date(m.timestamp) }));
+      }
+    } catch { /* ignore */ }
+    return [];
+  };
+
+  const [messages, setMessages] = useState<Message[]>(() => {
+    const saved = loadSavedMessages();
+    if (saved.length > 0) return saved;
+    return [{ role: 'assistant', content: getGreeting(situation, isHi), timestamp: new Date() }];
+  });
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [charCount, setCharCount] = useState(0);
@@ -95,19 +116,20 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const isFirstRender = useRef(true);
 
-  // ─── Set greeting on mount & language change ────────────────────────────
+  // ── Persist messages to sessionStorage on every change ─────────────────────
   useEffect(() => {
-    const greeting: Message = {
-      role: 'assistant',
-      content: getGreeting(situation, isHi),
-      timestamp: new Date(),
-    };
-    if (isFirstRender.current) {
-      setMessages([greeting]);
-      isFirstRender.current = false;
+    if (typeof window === 'undefined' || messages.length === 0) return;
+    try { sessionStorage.setItem(sessionKey, JSON.stringify(messages)); } catch { /* ignore */ }
+  }, [messages, sessionKey]);
+
+  // ── Set greeting on mount & language change ──────────────────────────────
+  useEffect(() => {
+    // When language changes, check if we have saved messages for the new language
+    const saved = loadSavedMessages();
+    if (saved.length > 0) {
+      setMessages(saved);
     } else {
-      // Language changed — regenerate greeting but keep conversation or restart
-      setMessages([greeting]);
+      setMessages([{ role: 'assistant', content: getGreeting(situation, isHi), timestamp: new Date() }]);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
@@ -192,12 +214,12 @@ export default function GeminiChat({ situation }: GeminiChatProps) {
 
   // ─── Clear conversation ──────────────────────────────────────────────────
   const clearChat = () => {
-    setMessages([{
-      role: 'assistant',
-      content: getGreeting(situation, isHi),
-      timestamp: new Date(),
-    }]);
+    const freshGreeting: Message = { role: 'assistant', content: getGreeting(situation, isHi), timestamp: new Date() };
+    setMessages([freshGreeting]);
     setInput('');
+    setCharCount(0);
+    // Also clear sessionStorage
+    try { sessionStorage.removeItem(sessionKey); } catch { /* ignore */ }
     setCharCount(0);
   };
 
